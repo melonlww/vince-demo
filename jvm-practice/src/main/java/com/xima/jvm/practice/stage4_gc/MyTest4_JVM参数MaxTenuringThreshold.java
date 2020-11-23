@@ -70,7 +70,7 @@ package com.xima.jvm.practice.stage4_gc;
  Metaspace       used 3807K, capacity 4536K, committed 4864K, reserved 1056768K
  class space    used 423K, capacity 428K, committed 512K, reserved 1048576K
  *
- *
+ * 备注：new threshold会动态变化，每次gc后会重新计算， 此处demo都为3，视频中实验中会有1的情况
  */
 
 
