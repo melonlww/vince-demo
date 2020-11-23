@@ -14,6 +14,12 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  *
  * 访问接口  http://localhost:8081/acc/user?id=1   轮询payment-service服务
  *         http://localhost:8082/pay/balance?id=1
+ *
+ *
+ * java -jar account-service-0.0.1-SNAPSHOT.jar
+ *
+ * java -jar payment-service-0.0.1-SNAPSHOT.jar --server.port=8082
+ * java -jar payment-service-0.0.1-SNAPSHOT.jar --server.port=8083
  */
 @SpringBootApplication
 @EnableDiscoveryClient

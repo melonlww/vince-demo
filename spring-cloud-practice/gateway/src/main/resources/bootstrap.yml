@@ -11,17 +11,6 @@ spring:
       discovery:
         locator:
           enabled: true
-      routes:
-        - id: payment-router
-          uri: lb://payment-service
-          predicates:
-          - Path=/pay/**
-          filters:
-          - name: RequestRateLimiter
-            args:
-              redis-rate-limiter.replenishRate: 1
-              redis-rate-limiter.burstCapacity: 5
-              key-resolver: '#{@ipKeyResolver}'
       default-filters:
         - name: Hystrix
           args:
