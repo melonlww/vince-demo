@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: payment-service
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+#        namespace: 2afe13ee-d5e4-4154-8146-15f973b27a63
+      discovery:
+        server-addr: 127.0.0.1:8848
+#        namespace: 2afe13ee-d5e4-4154-8146-15f973b27a63
+    sentinel:
+      eager: true
+      transport:
+        dashboard: localhost:8080
+      datasource:
+        ds1:
+          nacos:
+            server-addr: 127.0.0.1:8848
+#            namespace: 2afe13ee-d5e4-4154-8146-15f973b27a63
+            dataId: ${spring.application.name}-flow-rules
+            data-type: json
+            rule-type: flow

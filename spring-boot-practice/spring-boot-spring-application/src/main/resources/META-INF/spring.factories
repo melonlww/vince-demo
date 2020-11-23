@@ -1,0 +1,16 @@
+# Initializers实现配置
+org.springframework.context.ApplicationContextInitializer=\
+com.xima.springapplication.context.AfterHelloWorldApplicationContextInitializer,\
+com.xima.springapplication.context.HelloWorldApplicationContextInitializer
+# com.xima.springapplication.context.AnnotationConfigServletWebServerApplicationContextInitializer
+
+# ApplicationListener实现配置
+org.springframework.context.ApplicationListener=\
+com.xima.springapplication.listener.HelloWorldApplicationListener,\
+com.xima.springapplication.listener.AfterHelloWorldApplicationListener,\
+com.xima.springapplication.listener.ApplicationReadyEventListener,\
+com.xima.springapplication.listener.BeforeConfigFileApplicationListener
+
+# SpringApplicationRunListener实现配置
+org.springframework.boot.SpringApplicationRunListener=\
+com.xima.springapplication.run.HelloWorldRunListener

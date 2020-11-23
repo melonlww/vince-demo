@@ -1,0 +1,8 @@
+[
+  {
+    "resource": "GET:http://payment-service/pay/balance",
+    "count": 500,
+    "grade": 0,
+    "timeWindow": 10
+  }
+]
