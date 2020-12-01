@@ -19,6 +19,9 @@ public class CompletableFutureDemo_实现旅游平台问题_多个接口并发�
         CompletableFuture<Void> task3 = CompletableFuture.runAsync(new Task(789, prices));
         CompletableFuture<Void> allTasks = CompletableFuture.allOf(task1, task2, task3);
         try {
+            /**
+             * 会尝试等待所有的任务完成，但是最多只会等 3 秒钟，在此之间，如及时完成则及时返回
+             */
             allTasks.get(3, TimeUnit.SECONDS);
         } catch (InterruptedException e) {
         } catch (ExecutionException e) {
