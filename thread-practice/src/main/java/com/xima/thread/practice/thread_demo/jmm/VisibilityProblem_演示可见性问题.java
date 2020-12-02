@@ -2,8 +2,20 @@ package com.xima.thread.practice.thread_demo.jmm;
 
 /**
  * 描述：     演示可见性带来的问题
+ *
+ * 打印
+ * ------------------
+ * b=30;a=30
+ * b=30;a=30
+ * b=30;a=30
+ * b=30;a=10
+ * b=30;a=30
+ *
+ *
+ * 出现b=30;a=10 就是发生可见性问题
+ *
  */
-public class VisibilityProblem {
+public class VisibilityProblem_演示可见性问题 {
     int a = 10;
     int b = 20;
 
@@ -18,7 +30,7 @@ public class VisibilityProblem {
 
     public static void main(String[] args) {
         while (true) {
-            VisibilityProblem problem = new VisibilityProblem();
+            VisibilityProblem_演示可见性问题 problem = new VisibilityProblem_演示可见性问题();
             new Thread(new Runnable() {
                 @Override
                 public void run() {
