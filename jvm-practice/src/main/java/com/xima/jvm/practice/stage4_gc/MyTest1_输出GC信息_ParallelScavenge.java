@@ -16,7 +16,7 @@ package com.xima.jvm.practice.stage4_gc;
  *
  *
  */
-public class MyTest1_输出GC信息_PS {
+public class MyTest1_输出GC信息_ParallelScavenge {
 
     public static void main(String[] args) {
         int size = 1024 * 1024;
