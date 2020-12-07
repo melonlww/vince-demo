@@ -5,13 +5,13 @@ import java.util.concurrent.CyclicBarrier;
 
 public class CyclicBarrierDemo {
     public static void main(String[] args) {
-//        CyclicBarrier cyclicBarrier = new CyclicBarrier(3);
-        CyclicBarrier cyclicBarrier = new CyclicBarrier(3, new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("凑齐3人了，出发！");
-            }
-        });
+        CyclicBarrier cyclicBarrier = new CyclicBarrier(3);
+//        CyclicBarrier cyclicBarrier = new CyclicBarrier(3, new Runnable() {
+//            @Override
+//            public void run() {
+//                System.out.println("凑齐3人了，出发！");
+//            }
+//        });
         for (int i = 0; i < 6; i++) {
             new Thread(new Task(i + 1, cyclicBarrier)).start();
         }
