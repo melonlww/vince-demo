@@ -17,6 +17,7 @@
       <module>thread-practice</module>
       <module>data-structure-practice</module>
       <module>spring-cloud-practice</module>
+      <module>spring-framework-practice</module>
   </modules>
   <properties>
     <java.version>11</java.version>
