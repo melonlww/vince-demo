@@ -4,7 +4,10 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
-public class MyDynamicProxy {
+/**
+ * 生成代理类 $Proxy0
+ */
+public class MyDynamicProxy动态代理 {
 
     public static void main(String[] args) {
         //jdk1.8
