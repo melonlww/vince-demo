@@ -11,11 +11,11 @@ final class $Proxy0 extends Proxy implements Hello {
     private static Method m2;
     private static Method m0;
 
-    public $Proxy0(InvocationHandler var1) throws  {
+    public $Proxy0(InvocationHandler var1)  {
         super(var1);
     }
 
-    public final boolean equals(Object var1) throws  {
+    public final boolean equals(Object var1)  {
         try {
             return (Boolean)super.h.invoke(this, m1, new Object[]{var1});
         } catch (RuntimeException | Error var3) {
@@ -25,7 +25,7 @@ final class $Proxy0 extends Proxy implements Hello {
         }
     }
 
-    public final void sayHello() throws  {
+    public final void sayHello()  {
         try {
             super.h.invoke(this, m3, (Object[])null);
         } catch (RuntimeException | Error var2) {
@@ -35,7 +35,7 @@ final class $Proxy0 extends Proxy implements Hello {
         }
     }
 
-    public final String toString() throws  {
+    public final String toString()  {
         try {
             return (String)super.h.invoke(this, m2, (Object[])null);
         } catch (RuntimeException | Error var2) {
@@ -45,7 +45,7 @@ final class $Proxy0 extends Proxy implements Hello {
         }
     }
 
-    public final int hashCode() throws  {
+    public final int hashCode()  {
         try {
             return (Integer)super.h.invoke(this, m0, (Object[])null);
         } catch (RuntimeException | Error var2) {
