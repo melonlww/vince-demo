@@ -30,12 +30,12 @@ import org.springframework.core.io.Resource;
  * BeanFactory是Spring Bean工厂最顶层的抽象
  *
  */
-public class SpringClient {
+public class SpringClient_了解Spring容器管理Bean过程 {
 
     public static void main(String[] args) {
         //1.定义一个资源
         Resource resource = new ClassPathResource("applicationContext.xml");
-        //2.定义一个工厂
+        //2.定义一个工厂         XmlBeanFactory为DefaultListableBeanFactory的子类，太具体，只能加载xml文件，已经遭spring弃用
         DefaultListableBeanFactory defaultListableBeanFactory = new DefaultListableBeanFactory();
         //3.定义一个bean读取器，将读取好的内容放到工厂当中，由工厂进行bean统一的管理    读取器-->工厂
         BeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(defaultListableBeanFactory);
