@@ -83,7 +83,7 @@ public class BfsGraph {
 
     public static void main(String[] args) {
         /**
-         * 构建一个无向图
+         * 构建一个无向图 如图：广度优先搜索Breadth-First-Search.jpg
          */
         BfsGraph bfsGraph = new BfsGraph(8);
         bfsGraph.addEdge(0,1);

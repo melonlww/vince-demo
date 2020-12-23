@@ -22,7 +22,6 @@ public class DfsGraph {
         adj[t].add(s);
     }
 
-
     /**
      * 深度优先搜索用的是一种比较著名的算法思想，回溯思想
      *
@@ -72,7 +71,7 @@ public class DfsGraph {
 
     public static void main(String[] args) {
         /**
-         * 构建一个无向图
+         * 构建一个无向图 如图：深度优先搜索Depth-First-Search.jpg
          */
         DfsGraph dfsGraph = new DfsGraph(9);
         dfsGraph.addEdge(1,2);
@@ -86,7 +85,9 @@ public class DfsGraph {
         dfsGraph.addEdge(6,8);
         dfsGraph.addEdge(7,8);
 
-
+        /**
+         * 递归
+         */
         dfsGraph.dfs(1,7);
     }
 
