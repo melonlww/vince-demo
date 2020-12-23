@@ -9,7 +9,7 @@
     http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="student" class="com.xima.springframework.shengsiyuan.practice.stage1.bean.Student">
-        <property name="name" value="zhangsan"/>
+        <property name="name" value="张三"/>
         <property name="age" value="20"/>
     </bean>
 
