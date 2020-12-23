@@ -21,7 +21,7 @@ public class SpringClient2_Aware接口的作用 {
 
     public static void main(String[] args) {
         //1.定义一个资源
-        Resource resource = new ClassPathResource("applicationContext.xml");
+        Resource resource = new ClassPathResource("applicationContext2.xml");
         //2.定义一个工厂         XmlBeanFactory为DefaultListableBeanFactory的子类，太具体，只能加载xml文件，已经遭spring弃用
         DefaultListableBeanFactory defaultListableBeanFactory = new DefaultListableBeanFactory();
         //3.定义一个bean读取器，将读取好的内容放到工厂当中，由工厂进行bean统一的管理    读取器-->工厂
