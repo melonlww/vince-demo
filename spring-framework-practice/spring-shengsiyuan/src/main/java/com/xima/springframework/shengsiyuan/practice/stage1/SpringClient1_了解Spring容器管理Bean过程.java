@@ -30,7 +30,7 @@ import org.springframework.core.io.Resource;
  * BeanFactory是Spring Bean工厂最顶层的抽象
  *
  */
-public class SpringClient_了解Spring容器管理Bean过程 {
+public class SpringClient1_了解Spring容器管理Bean过程 {
 
     public static void main(String[] args) {
         //1.定义一个资源
