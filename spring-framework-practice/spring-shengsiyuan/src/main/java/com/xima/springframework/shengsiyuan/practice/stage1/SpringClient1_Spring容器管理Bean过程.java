@@ -86,6 +86,5 @@ public class SpringClient1_Spring容器管理Bean过程 {
         // 工厂装配完毕， 获取bean对象
         Student student = (Student) defaultListableBeanFactory.getBean("student");
         System.out.println(student);
-
     }
 }
