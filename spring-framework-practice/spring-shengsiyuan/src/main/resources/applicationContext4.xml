@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="student4" class="com.xima.springframework.shengsiyuan.practice.stage1.bean.Student4">
+        <property name="name" value="张三"/>
+        <property name="age" value="20"/>
+        <property name="teacher" ref="teacher"/>
+    </bean>
+
+    <bean id="teacher" class="com.xima.springframework.shengsiyuan.practice.stage1.bean.Teacher">
+        <property name="name" value="老王"/>
+        <property name="age" value="52"/>
+    </bean>
+
+</beans>
