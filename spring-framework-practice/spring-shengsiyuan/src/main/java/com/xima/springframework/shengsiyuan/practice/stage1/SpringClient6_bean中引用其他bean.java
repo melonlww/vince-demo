@@ -10,7 +10,7 @@ import org.springframework.core.io.Resource;
 /**
  *
  */
-public class SpringClient6 {
+public class SpringClient6_bean中引用其他bean {
 
     public static void main(String[] args) {
         //1.定义一个资源
