@@ -8,6 +8,15 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
 /**
+ * 一个bean中引用了另一个bean，解析PropertyValue时，会走到resolveReference方法，加载被引用的bean
+ *
+ * Resolve a reference to another bean in the factory.
+ *
+ * BeanDefinitionValueResolver#resolveValueIfNecessary(Object argName, @Nullable Object value) {
+ * 		if (value instanceof RuntimeBeanReference) {
+ * 			RuntimeBeanReference ref = (RuntimeBeanReference) value;
+ * 			return resolveReference(argName, ref);
+ *      }
  *
  */
 public class SpringClient6_bean中引用其他bean {
