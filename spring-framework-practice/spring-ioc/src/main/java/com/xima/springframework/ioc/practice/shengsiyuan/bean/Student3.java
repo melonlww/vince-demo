@@ -1,4 +1,4 @@
-package com.xima.springframework.ioc.practice.stage1.bean;
+package com.xima.springframework.ioc.practice.shengsiyuan.bean;
 
 public class Student3{
 

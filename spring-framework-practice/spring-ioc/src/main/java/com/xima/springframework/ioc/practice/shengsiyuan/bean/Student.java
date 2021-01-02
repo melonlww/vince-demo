@@ -1,20 +1,20 @@
-package com.xima.springframework.ioc.practice.stage1.bean;
+package com.xima.springframework.ioc.practice.shengsiyuan.bean;
 
-import org.springframework.beans.factory.BeanNameAware;
-
-public class Student2 implements BeanNameAware {
+/**
+ * POJO: Plain Old Java Object
+ */
+public class Student {
 
     private String name;
 
     private int age;
-
-    private String id;
 
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
+        System.out.println("setName method invoke");
         this.name = name;
     }
 
@@ -23,6 +23,7 @@ public class Student2 implements BeanNameAware {
     }
 
     public void setAge(int age) {
+        System.out.println("setAge method invoke");
         this.age = age;
     }
 
@@ -31,13 +32,6 @@ public class Student2 implements BeanNameAware {
         return "Student{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
-                ", id='" + id + '\'' +
                 '}';
-    }
-
-
-    @Override
-    public void setBeanName(String beanName) {
-        id = beanName;
     }
 }

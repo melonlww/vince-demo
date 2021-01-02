@@ -8,9 +8,9 @@
     http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="student3" class="com.xima.springframework.ioc.practice.shengsiyuan.bean.Student3">
-        <constructor-arg name="name" value="huanggua"/>
-        <constructor-arg name="age" value="23"/>
+    <bean id="student" class="com.xima.springframework.ioc.practice.shengsiyuan.bean.Student" scope="prototype">
+        <property name="name" value="张三"/>
+        <property name="age" value="20"/>
     </bean>
 
 </beans>

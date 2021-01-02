@@ -1,6 +1,6 @@
-package com.xima.springframework.ioc.practice.stage1;
+package com.xima.springframework.ioc.practice.shengsiyuan;
 
-import com.xima.springframework.ioc.practice.stage1.bean.Student4;
+import com.xima.springframework.ioc.practice.shengsiyuan.bean.Student4;
 import org.springframework.beans.factory.support.BeanDefinitionReader;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;

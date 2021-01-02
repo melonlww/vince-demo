@@ -1,10 +1,14 @@
-package com.xima.springframework.ioc.practice.stage1.bean;
+package com.xima.springframework.ioc.practice.shengsiyuan.bean;
 
-public class Teacher {
+import org.springframework.beans.factory.BeanNameAware;
+
+public class Student2 implements BeanNameAware {
 
     private String name;
 
     private int age;
+
+    private String id;
 
     public String getName() {
         return name;
@@ -24,9 +28,16 @@ public class Teacher {
 
     @Override
     public String toString() {
-        return "Teacher{" +
+        return "Student{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
+                ", id='" + id + '\'' +
                 '}';
+    }
+
+
+    @Override
+    public void setBeanName(String beanName) {
+        id = beanName;
     }
 }

@@ -1,12 +1,10 @@
-package com.xima.springframework.ioc.practice.stage1.bean;
+package com.xima.springframework.ioc.practice.shengsiyuan.bean;
 
-public class Student4 {
+public class Teacher {
 
     private String name;
 
     private int age;
-
-    private Teacher teacher;
 
     public String getName() {
         return name;
@@ -24,20 +22,11 @@ public class Student4 {
         this.age = age;
     }
 
-    public Teacher getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
-    }
-
     @Override
     public String toString() {
-        return "Student4{" +
+        return "Teacher{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
-                ", teacher=" + teacher +
                 '}';
     }
 }

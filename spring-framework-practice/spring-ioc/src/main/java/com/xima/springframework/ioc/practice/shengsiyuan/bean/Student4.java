@@ -1,13 +1,12 @@
-package com.xima.springframework.ioc.practice.stage1.bean;
+package com.xima.springframework.ioc.practice.shengsiyuan.bean;
 
-/**
- * POJO: Plain Old Java Object
- */
-public class Student {
+public class Student4 {
 
     private String name;
 
     private int age;
+
+    private Teacher teacher;
 
     public String getName() {
         return name;
@@ -25,11 +24,20 @@ public class Student {
         this.age = age;
     }
 
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
     @Override
     public String toString() {
-        return "Student{" +
+        return "Student4{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
+                ", teacher=" + teacher +
                 '}';
     }
 }

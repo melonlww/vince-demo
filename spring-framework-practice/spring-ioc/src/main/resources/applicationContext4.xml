@@ -8,13 +8,13 @@
     http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="student4" class="com.xima.springframework.ioc.practice.stage1.bean.Student4">
+    <bean id="student4" class="com.xima.springframework.ioc.practice.shengsiyuan.bean.Student4">
         <property name="name" value="张三"/>
         <property name="age" value="20"/>
         <property name="teacher" ref="teacher"/>
     </bean>
 
-    <bean id="teacher" class="com.xima.springframework.ioc.practice.stage1.bean.Teacher">
+    <bean id="teacher" class="com.xima.springframework.ioc.practice.shengsiyuan.bean.Teacher">
         <property name="name" value="老王"/>
         <property name="age" value="52"/>
     </bean>
