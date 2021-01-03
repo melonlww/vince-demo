@@ -8,7 +8,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
 /**
- *
+ * getBean方法用到反射时，当配置文件中的属性名为name2，根据spring默认规则会获取setName2()方法，获取不到时则抛出异常
  *
  */
 public class SpringClient7_配置错误的属性名 {
