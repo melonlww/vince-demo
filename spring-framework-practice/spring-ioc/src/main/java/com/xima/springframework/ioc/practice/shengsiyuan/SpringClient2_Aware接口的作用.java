@@ -11,6 +11,7 @@ import org.springframework.core.io.Resource;
  * @see Student2 implements BeanNameAware
  *
  * aware,翻译过来是知道的，已感知的，意识到的，所以这些接口从字面意思应该是能感知到所有Aware前面的含义。
+ * aware接口存在的意义：方便通过spring中的bean对象来获取对应容器中的相关属性值
  * BeanNameAware让自身Bean能够感知到，获取到自身在Spring容器中的id属性
  *
  * 同理，其他的Aware接口也是为了能够感知到自身的一些属性。

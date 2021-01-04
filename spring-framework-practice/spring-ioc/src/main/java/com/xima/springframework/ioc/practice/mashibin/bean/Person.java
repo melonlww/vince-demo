@@ -1,10 +1,18 @@
 package com.xima.springframework.ioc.practice.mashibin.bean;
 
-public class Person {
+import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.context.EnvironmentAware;
+import org.springframework.core.env.Environment;
+
+public class Person implements BeanNameAware, EnvironmentAware {
 
     private String name;
 
     private int age;
+
+    private String beanName;
+
+    private Environment environment;
 
     public String getName() {
         return name;
@@ -28,5 +36,23 @@ public class Person {
                 "name='" + name + '\'' +
                 ", age=" + age +
                 '}';
+    }
+
+    @Override
+    public void setBeanName(String name) {
+        this.beanName = name;
+    }
+
+    @Override
+    public void setEnvironment(Environment environment) {
+        this.environment = environment;
+    }
+
+    public String getBeanName() {
+        return beanName;
+    }
+
+    public Environment getEnvironment() {
+        return environment;
     }
 }
