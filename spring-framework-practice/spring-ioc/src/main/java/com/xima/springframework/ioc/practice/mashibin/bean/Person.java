@@ -32,7 +32,7 @@ public class Person implements BeanNameAware, EnvironmentAware {
 
     @Override
     public String toString() {
-        return "Student{" +
+        return "Person{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
                 '}';
