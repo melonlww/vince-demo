@@ -9,14 +9,10 @@
     http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="personA" class="com.xima.springframework.ioc.practice.mashibin.bean.PersonA">
-        <property name="name" value="张三"/>
-        <property name="age" value="34"/>
         <property name="personB" ref="personB"/>
     </bean>
 
     <bean id="personB" class="com.xima.springframework.ioc.practice.mashibin.bean.PersonB">
-        <property name="name" value="李四"/>
-        <property name="age" value="25"/>
         <property name="personA" ref="personA"/>
     </bean>
 
