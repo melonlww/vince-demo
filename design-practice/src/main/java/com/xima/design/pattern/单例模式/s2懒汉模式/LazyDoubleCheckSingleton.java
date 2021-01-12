@@ -13,7 +13,6 @@ public class LazyDoubleCheckSingleton {
                     instance = new LazyDoubleCheckSingleton();
                 }
             }
-
         }
         return instance;
     }
