@@ -3,6 +3,9 @@ package com.xima.loader;
 import reactor.core.publisher.Flux;
 import reactor.core.scheduler.Schedulers;
 
+/**
+ * 多线程并行执行
+ */
 public class FluxParallelDemo extends DataLoader {
 
      void doLoad() {
