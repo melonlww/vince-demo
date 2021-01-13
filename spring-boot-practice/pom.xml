@@ -21,6 +21,7 @@
     <module>spring-webmvc</module>
     <module>springboot-webmvc</module>
     <module>springboot-view</module>
+    <module>spring-boot-event-publisher</module>
   </modules>
 
   <properties>
