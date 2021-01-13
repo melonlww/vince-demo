@@ -5,9 +5,10 @@ import java.io.*;
 public class TestSerializableSingletonFactory {
     public static void main(String[] args) {
         SerializableSingleton s1 = SerializableSingleton.getInstance();
-        SerializableSingleton s2 = null;
+        SerializableSingleton s2;
 
         try{
+            //生成到项目目录下 Users/xmly/practice/code/vince-demo/SerializableSingleton.obj
             FileOutputStream fos = new FileOutputStream("SerializableSingleton.obj");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(s1);
