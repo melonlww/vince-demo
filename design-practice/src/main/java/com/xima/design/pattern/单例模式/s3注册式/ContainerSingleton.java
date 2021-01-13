@@ -8,17 +8,21 @@ public class ContainerSingleton {
     private static Map<String, Object> ioc = new ConcurrentHashMap<>();
 
     public static Object getInstance(String className) {
-        Object instance = null;
         if (ioc.containsKey(className)) {
-            instance = ioc.get(className);
-        } else {
+            return ioc.get(className);
+        }
+        Object instance = null;
+        //保证线程安全， 参考spring getBean中代码，类似双重检查
+        synchronized (ContainerSingleton.class) {
+            if (ioc.containsKey(className)) {
+                return ioc.get(className);
+            }
             try {
                 instance = Class.forName(className).getDeclaredConstructor().newInstance();
                 ioc.put(className, instance);
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            return instance;
         }
         return instance;
     }
