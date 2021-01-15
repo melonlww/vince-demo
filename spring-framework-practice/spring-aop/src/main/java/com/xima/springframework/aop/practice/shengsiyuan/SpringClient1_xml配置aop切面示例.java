@@ -28,14 +28,19 @@ public class SpringClient1_xml配置aop切面示例 {
         MyService myService = (MyService) defaultListableBeanFactory.getBean("myAop");
         myService.myMethod();
 
+        myService.myMethod2();
+
         //打印bean的父类  class java.lang.reflect.Proxy
         System.out.println(myService.getClass().getSuperclass());
 
-        //打印bean实现的接口
-//        interface com.xima.springframework.aop.practice.shengsiyuan.service.MyService
-//        interface org.springframework.aop.SpringProxy
-//        interface org.springframework.aop.framework.Advised
-//        interface org.springframework.core.DecoratingProxy
+        /**
+         * 打印bean实现的接口    AopProxyUtils#completeProxiedInterfaces方法中实现了在调用Proxy.newProxyInstance前增加了这几个接口，SpringProxy，Advised，DecoratingProxy
+         *
+         * interface com.xima.springframework.aop.practice.shengsiyuan.service.MyService
+         * interface org.springframework.aop.SpringProxy
+         * interface org.springframework.aop.framework.Advised
+         * interface org.springframework.core.DecoratingProxy
+         */
         for(int i =0;i<myService.getClass().getInterfaces().length;i++){
             System.out.println(myService.getClass().getInterfaces()[i]);
         }

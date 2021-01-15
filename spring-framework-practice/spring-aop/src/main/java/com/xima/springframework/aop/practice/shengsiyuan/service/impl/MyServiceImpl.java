@@ -7,4 +7,9 @@ public class MyServiceImpl implements MyService {
     public void myMethod() {
         System.out.println("myMethod invoked");
     }
+
+    @Override
+    public void myMethod2() {
+        System.out.println("myMethod invoked222");
+    }
 }
