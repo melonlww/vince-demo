@@ -7,19 +7,24 @@ import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
+/**
+ * BeanFactory是Spring IOC的工厂，它里面管理者Spring所创建出来的各种Bean对象，当我们在配置文件（注解）中声明了某个bean的id后，通过
+ * 这个id就可以获取到与该id所对应的class对象的实例（可能新建，也可能从缓存中获取）
+ *
+ * FactoryBean本质上也是一个Bean，它同其他Bean一样，也是由BeanFactory所管理和维护的，当然它的实例也会缓存到Spring的工厂中（如果是单例），
+ * 它与普通的Bean的位于区别在于，当Spring创建一个FactoryBean的实例后，它接下来会判断当前所创建的Bean是否是一个FactoryBean实例，如果不是，
+ * 那么就直接将创建出来的Bean返回给客户端；如果是，那么它会对其进行进一步的处理，根据配置文件所配置的target，advisor与interfaces等
+ * 信息，在运行期动态创建出一个类，并生成该类的一个实例，最后将该实例返回给客户端；因此，我们在声明一个FactoryBean时，通过id获取到的并非
+ * 这个FactoryBean的实例，而是它动态生成出来的一个代理对象（通过三种方式来进行生成 JdkDynamicAopProxy，CglibAopProxy，ObjenesisCglibAopProxy）
+ */
 public class SpringClient1_xml配置aop切面示例 {
 
     public static void main(String[] args) {
-        //1.定义一个资源
         Resource resource = new ClassPathResource("applicationContext.xml");
-        //2.定义一个工厂         XmlBeanFactory为DefaultListableBeanFactory的子类，太具体，只能加载xml文件，已经遭spring弃用
         DefaultListableBeanFactory defaultListableBeanFactory = new DefaultListableBeanFactory();
-        //3.定义一个bean读取器，将读取好的内容放到工厂当中，由工厂进行bean统一的管理    读取器-->工厂
         BeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(defaultListableBeanFactory);
-        //4.定义好从指定资源中读取      读取器-->资源
         beanDefinitionReader.loadBeanDefinitions(resource);
 
-        // 工厂装配完毕， 获取bean对象
         MyService myService = (MyService) defaultListableBeanFactory.getBean("myAop");
         myService.myMethod();
 
