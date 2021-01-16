@@ -27,7 +27,7 @@ public class DeepPrototype_ArrayList implements Cloneable{
 
     /**
      * ArrayList clone方法实现了深克隆
-     * 需要(List)((ArrayList) 强转，硬编码，不太常用
+     * 需要(List)((ArrayList) 强转，硬编码，不太常用，而且List对象下如果是引用对象，还是潜克隆
      * @return
      */
     public DeepPrototype_ArrayList deepCloneArrayList() {
