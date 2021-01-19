@@ -1,18 +1,17 @@
-package com.xima.design.pattern.结构型.代理模式.s2动态代理;
+package com.xima.design.pattern.结构型.代理模式.s4自实现代理;
 
-import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
 
-public class JdkProxy implements InvocationHandler {
+public class XimaMeipo implements XimaInvocationHandler {
 
     private Object target;
 
     public Object getInstance(Object target) {
         this.target = target;
         Class<?> clazz = target.getClass();
-        return Proxy.newProxyInstance(clazz.getClassLoader(), clazz.getInterfaces(), this);
+        return XimaProxy.newProxyInstance(new XimaClassloader(), clazz.getInterfaces(), this);
     }
+
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
@@ -23,10 +22,10 @@ public class JdkProxy implements InvocationHandler {
     }
 
     private void before() {
-        System.out.println("JdkProxy called before request().");
+        System.out.println("XimaMeipo called before request().");
     }
 
     private void after() {
-        System.out.println("JdkProxy called after request().");
+        System.out.println("XimaMeipo called after request().");
     }
 }

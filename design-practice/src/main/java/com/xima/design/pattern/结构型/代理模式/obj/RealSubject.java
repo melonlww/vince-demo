@@ -1,4 +1,4 @@
-package com.xima.design.pattern.结构型.代理模式.s2动态代理;
+package com.xima.design.pattern.结构型.代理模式.obj;
 
 public class RealSubject implements ISubject {
 

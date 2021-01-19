@@ -25,10 +25,10 @@ public class CglibProxy implements MethodInterceptor {
     }
 
     private void before() {
-        System.out.println("called before request().");
+        System.out.println("CglibProxy called before request().");
     }
 
     private void after() {
-        System.out.println("called after request().");
+        System.out.println("CglibProxy called after request().");
     }
 }
