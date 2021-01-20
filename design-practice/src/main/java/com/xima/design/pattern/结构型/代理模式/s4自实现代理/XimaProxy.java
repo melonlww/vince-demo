@@ -32,7 +32,7 @@ public class XimaProxy {
         //4.把生成的.class文件加载到JVM中
         Object obj = loadClass(loader, h);
         //5.返回新的代理对象
-//        f.delete();
+        f.delete();
         return obj;
     }
 
