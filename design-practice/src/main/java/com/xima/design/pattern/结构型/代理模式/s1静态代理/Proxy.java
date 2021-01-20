@@ -17,6 +17,13 @@ public class Proxy implements ISubject {
         after();
     }
 
+    @Override
+    public void showName(String name) {
+        before();
+        subject.showName(name);
+        after();
+    }
+
     private void before(){
         System.out.println("called before request().");
     }

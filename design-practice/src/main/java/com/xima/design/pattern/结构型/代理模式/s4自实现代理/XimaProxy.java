@@ -51,10 +51,10 @@ public class XimaProxy {
     private static void compilerSrc(File f) {
         try {
             JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
-            StandardJavaFileManager manager = compiler.getStandardFileManager(null,null,null);
+            StandardJavaFileManager manager = compiler.getStandardFileManager(null, null, null);
             Iterable iterable = manager.getJavaFileObjects(f);
 
-            JavaCompiler.CompilationTask task = compiler.getTask(null,manager,null,null,null,iterable);
+            JavaCompiler.CompilationTask task = compiler.getTask(null, manager, null, null, null, iterable);
             task.call();
             manager.close();
         } catch (IOException e) {
@@ -82,14 +82,48 @@ public class XimaProxy {
         sb.append("this.h = h;" + LN);
         sb.append("}" + LN);
 
-        //todo:简化了方法参数()
         for (Class<?> iterf : interfaces) {
             for (Method method : iterf.getDeclaredMethods()) {
                 sb.append("@Override" + LN);
-                sb.append("public " + method.getReturnType() + " " + method.getName() + "(){" + LN);
+                sb.append("public " + method.getReturnType() + " " + method.getName() + "(");
+
+                    StringBuilder methodParamSb = new StringBuilder();
+                    int varParamNum = 0;
+                    for (Class<?> parameterType : method.getParameterTypes()) {
+                        methodParamSb.append(parameterType.getName() + " " + "var" + (varParamNum++) + ",");
+                    }
+                    String methodParamStr = methodParamSb.toString();
+                    if (methodParamStr.length() > 0) {
+                        methodParamStr = methodParamStr.substring(0, methodParamStr.length() - 1);
+                    }
+                    sb.append(methodParamStr + "){" + LN);
+
+
                 sb.append("try{" + LN);
-                sb.append("Method m = " + iterf.getName() + ".class.getMethod(\"" + method.getName() + "\", new Class[]{});" + LN);
-                sb.append("this.h.invoke(this, m, new Object[]{});" + LN);
+//
+                sb.append("Method m = " + iterf.getName() + ".class.getMethod(\"" + method.getName() + "\"");
+                sb.append(", new Class[]{");
+                    StringBuilder methodParamClassSb = new StringBuilder();
+                    for (Class<?> parameterType : method.getParameterTypes()) {
+                        methodParamClassSb.append(parameterType.getName() + ".class,");
+                    }
+                    String methodParamClassStr = methodParamClassSb.toString();
+                    if (methodParamClassStr.length() > 0) {
+                        methodParamClassStr = methodParamClassStr.substring(0, methodParamClassStr.length() - 1);
+                    }
+                    sb.append(methodParamClassStr + "});" + LN);
+
+                sb.append("this.h.invoke(this, m, new Object[]{");
+                        StringBuilder methodParamValueSb = new StringBuilder();
+                        int varValueNum = 0;
+                        for (Class<?> parameterType : method.getParameterTypes()) {
+                            methodParamValueSb.append("var" + (varValueNum++) + ",");
+                        }
+                        String methodParamValueStr = methodParamValueSb.toString();
+                        if (methodParamValueStr.length() > 0) {
+                            methodParamValueStr = methodParamValueStr.substring(0, methodParamValueStr.length() - 1);
+                        }
+                        sb.append(methodParamValueStr + "});" + LN);
                 sb.append("}catch (Error _ex){" + LN);
                 sb.append("}catch (Throwable throwable){ " + LN);
                 sb.append("throw new UndeclaredThrowableException(throwable);" + LN);
@@ -115,5 +149,44 @@ public class XimaProxy {
         }
         return f;
     }
+
+    public static void main(String[] args) {
+        System.out.println(generateSrc(com.xima.design.pattern.结构型.代理模式.obj.RealSubject.class.getInterfaces()));
+    }
 }
+
+/**
+ * 生成字符串
+ * ======================================
+ * package com.xima.design.pattern;
+ * import com.xima.design.pattern.结构型.代理模式.s4自实现代理.XimaInvocationHandler;
+ * import java.lang.reflect.*;
+ * import com.xima.design.pattern.结构型.代理模式.obj.ISubject;
+ * public class $Proxy0 implements ISubject{
+ * private XimaInvocationHandler h;
+ * public $Proxy0(XimaInvocationHandler h){
+ * this.h = h;
+ * }
+ * @Override
+ * public void request(){
+ * try{
+ * Method m = com.xima.design.pattern.结构型.代理模式.obj.ISubject.class.getMethod("request", new Class[]{});
+ * this.h.invoke(this, m, new Object[]{});
+ * }catch (Error _ex){
+ * }catch (Throwable throwable){
+ * throw new UndeclaredThrowableException(throwable);
+ * }
+ * }
+ * @Override
+ * public void showName(java.lang.String var0){
+ * try{
+ * Method m = com.xima.design.pattern.结构型.代理模式.obj.ISubject.class.getMethod("showName", new Class[]{java.lang.String.class});
+ * this.h.invoke(this, m, new Object[]{var0});
+ * }catch (Error _ex){
+ * }catch (Throwable throwable){
+ * throw new UndeclaredThrowableException(throwable);
+ * }
+ * }
+ * }
+ */
 

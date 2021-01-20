@@ -10,5 +10,6 @@ public class Test {
         XimaMeipo ximaMeipo = new XimaMeipo();
         ISubject subject = (ISubject)ximaMeipo.getInstance(new RealSubject());
         subject.request();
+        subject.showName("ww");
     }
 }

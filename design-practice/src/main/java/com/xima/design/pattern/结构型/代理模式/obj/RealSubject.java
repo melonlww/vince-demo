@@ -6,4 +6,9 @@ public class RealSubject implements ISubject {
     public void request() {
         System.out.println("real service is called.");
     }
+
+    @Override
+    public void showName(String name) {
+        System.out.println("real service name is " + name + ".");
+    }
 }
