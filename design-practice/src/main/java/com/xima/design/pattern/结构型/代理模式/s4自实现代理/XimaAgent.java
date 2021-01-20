@@ -2,7 +2,7 @@ package com.xima.design.pattern.结构型.代理模式.s4自实现代理;
 
 import java.lang.reflect.Method;
 
-public class XimaMeipo implements XimaInvocationHandler {
+public class XimaAgent implements XimaInvocationHandler {
 
     private Object target;
 

@@ -22,7 +22,7 @@ public class XimaProxy {
                                           XimaInvocationHandler h) {
         //1.动态生成源码.java文件
         String src = generateSrc(interfaces);
-        System.out.println(src);
+//        System.out.println(src);
         //2.Java文件输出到磁盘，保存为文件$Proxy0.java
         File f = saveFile(src);
 
