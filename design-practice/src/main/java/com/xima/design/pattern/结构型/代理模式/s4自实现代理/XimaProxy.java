@@ -22,7 +22,7 @@ public class XimaProxy {
                                           XimaInvocationHandler h) {
         //1.动态生成源码.java文件
         String src = generateSrc(interfaces);
-
+        System.out.println(src);
         //2.Java文件输出到磁盘，保存为文件$Proxy0.java
         File f = saveFile(src);
 
@@ -32,7 +32,7 @@ public class XimaProxy {
         //4.把生成的.class文件加载到JVM中
         Object obj = loadClass(loader, h);
         //5.返回新的代理对象
-        f.delete();
+//        f.delete();
         return obj;
     }
 
@@ -64,13 +64,14 @@ public class XimaProxy {
 
     private static String generateSrc(Class<?>[] interfaces) {
         StringBuilder sb = new StringBuilder();
-        sb.append("package com.xima.design.pattern.结构型.代理模式.s4自实现代理;" + LN);
+        sb.append("package com.xima.design.pattern;" + LN);
+        sb.append("import com.xima.design.pattern.结构型.代理模式.s4自实现代理.XimaInvocationHandler;" + LN);
         sb.append("import java.lang.reflect.*;" + LN);
         for (Class<?> iterf : interfaces) {
             sb.append("import " + iterf.getName() + ";" + LN);
         }
 
-        sb.append("final class " + PROXY_CLASS_NAME + " implements");
+        sb.append("public class " + PROXY_CLASS_NAME + " implements");
         for (Class<?> iterf : interfaces) {
             String[] iterfPackageName = iterf.getName().replace(".", ",").split(",");
             sb.append(" " + iterfPackageName[iterfPackageName.length - 1]);
