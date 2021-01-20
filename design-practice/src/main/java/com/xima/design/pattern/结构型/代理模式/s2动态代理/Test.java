@@ -2,6 +2,10 @@ package com.xima.design.pattern.结构型.代理模式.s2动态代理;
 
 import com.xima.design.pattern.结构型.代理模式.obj.ISubject;
 import com.xima.design.pattern.结构型.代理模式.obj.RealSubject;
+//import sun.misc.ProxyGenerator;
+
+import java.io.FileOutputStream;
+
 
 public class Test {
 
@@ -9,5 +13,14 @@ public class Test {
         JdkProxy jdkProxy = new JdkProxy();
         ISubject subject = (ISubject)jdkProxy.getInstance(new RealSubject());
         subject.request();
+
+        /*byte[] bytes = ProxyGenerator.generateProxyClass("$Proxy0", new Class[]{ISubject.class});
+        try{
+            FileOutputStream os = new FileOutputStream("/Users/xmly/practice/code/vince-demo/design-practice/src/main/java/com/xima/design/pattern/结构型/代理模式/s2动态代理/$Proxy0.class");
+            os.write(bytes);
+            os.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
     }
 }

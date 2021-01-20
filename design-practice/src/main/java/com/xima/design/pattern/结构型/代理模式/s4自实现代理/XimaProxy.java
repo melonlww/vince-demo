@@ -2,6 +2,8 @@ package com.xima.design.pattern.结构型.代理模式.s4自实现代理;
 
 public class XimaProxy {
 
+    private final static String LN = "\n\r";
+
     public static Object newProxyInstance(ClassLoader loader,
                                           Class<?>[] interfaces,
                                           XimaInvocationHandler h){
@@ -16,6 +18,33 @@ public class XimaProxy {
         //5.返回新的代理对象
 
         return null;
+    }
+
+
+    private static String generateSrc(Class<?>[] interfaces){
+        StringBuilder sb = new StringBuilder();
+        sb.append("package com.xima.design.pattern.结构型.代理模式.s4自实现代理;" + LN);
+
+        sb.append("import java.lang.reflect;" + LN);
+        for(Class<?> iterf:interfaces){
+            sb.append("import "+ iterf.toString() + ";" + LN);
+        }
+
+        sb.append("final class $Proxy0 implements");
+        for(Class<?> iterf:interfaces){
+            sb.append(" " + iterf.getClass().getName());
+        }
+        sb.append("{" + LN);
+
+
+
+
+        sb.append("}" + LN);
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+//        generateSrc();
     }
 }
 
