@@ -13,6 +13,5 @@ public class Test {
 
         Decorator decoratorBandA = new ConcreteDecoratorB(decoratorA);
         decoratorBandA.operation();
-
     }
 }
