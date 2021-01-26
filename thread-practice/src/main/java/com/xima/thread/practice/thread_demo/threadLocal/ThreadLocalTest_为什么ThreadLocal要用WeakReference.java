@@ -1,6 +1,7 @@
 package com.xima.thread.practice.thread_demo.threadLocal;
 
-//todo 没看懂 为什么ThreadLocal要用WeakReference
+import java.lang.ref.WeakReference;
+
 public class ThreadLocalTest_为什么ThreadLocal要用WeakReference {
 
 //    public static void main(String[] args) throws InterruptedException {
@@ -17,29 +18,39 @@ public class ThreadLocalTest_为什么ThreadLocal要用WeakReference {
 //    }
 
 
+    /**
+     * 为什么ThreadLocal要用WeakReference
+     *
+     * 　我的理解就是，WeakReference对应用的对象ObjectPassing是弱引用，不会影响到ObjectPassing的GC行为。
+     * 如果是强引用的话，在线程运行过程中，我们不再使用ObjectPassing了，将ObjectPassing置为null，
+     * 但ObjectPassing在线程的ThreadLocalMap里还有引用，导致其无法被GC回收（当然，可以等到线程运行结束后，
+     * 整个Map都会被回收，但很多线程要运行很久，如果等到线程结束，便会一直占着内存空间）。
+     * 而Entry声明为WeakReference，ObjectPassing置为null后，线程的threadLocalMap就不算强引用了，
+     * ObjectPassing就可以被GC回收了。map的后续操作中，也会逐渐把对应的"stale entry"清理出去，避免内存泄漏。
+     *
+     * 　　所以，我们在使用完ThreadLocal变量时，尽量用threadLocal.remove()来清除，
+     * 避免threadLocal=null的操作。前者remove()会同时清除掉线程threadLocalMap里的entry，
+     * 算是彻底清除；而后者虽然释放掉了threadLocal，但线种threadLocalMap里还有其"stale entry"，后续还需要处理。
+     */
     public static void main(String[] args) {
-        ThreadLocal local = new ThreadLocal();
-        local.set("当前线程名称：" + Thread.currentThread().getName());//将ThreadLocal作为key放入threadLocals.Entry中
-        Thread t = Thread.currentThread();//注意断点看此时的threadLocals.Entry数组刚设置的referent是指向Local的，referent就是Entry中的key只是被WeakReference包装了一下
-        local = null;//断开强引用，即断开local与referent的关联，但Entry中此时的referent还是指向Local的，为什么会这样，当引用传递设置为null时无法影响传递内的结果
-        System.gc();//执行GC
-        t = Thread.currentThread();//这时Entry中referent是null了，被GC掉了，因为Entry和key的关系是WeakReference，并且在没有其他强引用的情况下就被回收掉了
-//如果这里不采用WeakReference，即使local=null，那么也不会回收Entry的key，因为Entry和key是强关联
-//但是这里仅能做到回收key不能回收value，如果这个线程运行时间非常长，即使referent GC了，value持续不清空，就有内存溢出的风险
-//彻底回收最好调用remove
-//即：local.remove();//remove相当于把ThreadLocalMap里的这个元素干掉了，并没有把自己干掉
-        System.out.println(local);
-    }
+        ObjectPassing obj = new ObjectPassing();
+        obj.setName("name");
+        WeakReference<ObjectPassing> weakReference = new WeakReference<>(obj);
+        try {
+            Thread.sleep(2000L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(weakReference.get().getName());//1
 
-    public void testNullPassFunc(ObjectPassing obj) {
-        obj = new ObjectPassing();
-        obj.setName("zxp");
-        System.out.println("2:" + obj);
-    }
+        obj.setName("name2");
+        System.out.println(weakReference.get().getName());//1
 
-    public void testNullPassFunc2(ObjectPassing obj) {
         obj = null;
-        System.out.println("2:" + obj);
+        System.out.println(weakReference.get());//1
+
+        System.gc();//遇到gc就回收了
+        System.out.println(weakReference.get());//null
     }
 
     static class ObjectPassing {

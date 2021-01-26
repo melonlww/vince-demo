@@ -16,8 +16,9 @@ public class ThreadLocalTest {
 
         apple.setPrice("2");
         System.out.println(weakReference.get().getPrice());//1
-//        System.gc();//遇到gc就回收了
-//        System.out.println(weakReference.get());//null
+
+        System.gc();//遇到gc就回收了
+        System.out.println(weakReference.get());//null
     }
 
     public static class Apple {
