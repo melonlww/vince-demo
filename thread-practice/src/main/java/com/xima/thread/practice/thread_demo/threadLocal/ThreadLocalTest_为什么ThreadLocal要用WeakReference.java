@@ -1,5 +1,6 @@
 package com.xima.thread.practice.thread_demo.threadLocal;
 
+//todo 没看懂 为什么ThreadLocal要用WeakReference
 public class ThreadLocalTest_为什么ThreadLocal要用WeakReference {
 
 //    public static void main(String[] args) throws InterruptedException {
