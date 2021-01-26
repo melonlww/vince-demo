@@ -3,7 +3,9 @@ package com.xima.design.pattern.结构型.享元模式_Flyweight.s1传统;
 import java.util.HashMap;
 import java.util.Map;
 
-//享元工厂
+/**
+ * 享元工厂
+ */
 public class FlyweightFactory {
 
     private static Map<String, IFlyweight> pool = new HashMap<>();
