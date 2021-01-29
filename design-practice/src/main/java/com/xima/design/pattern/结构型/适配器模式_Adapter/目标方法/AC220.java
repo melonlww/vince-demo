@@ -1,4 +1,4 @@
-package com.xima.design.pattern.结构型.适配器模式_Adapter;
+package com.xima.design.pattern.结构型.适配器模式_Adapter.目标方法;
 
 public class AC220 {
 

@@ -1,5 +1,8 @@
 package com.xima.design.pattern.结构型.适配器模式_Adapter.s4实例_登录;
 
+import com.xima.design.pattern.结构型.适配器模式_Adapter.目标方法.PassportService;
+import com.xima.design.pattern.结构型.适配器模式_Adapter.ResultMsg;
+
 public class PassportForThirdAdapter extends PassportService implements IPassportForThird {
 
     @Override
