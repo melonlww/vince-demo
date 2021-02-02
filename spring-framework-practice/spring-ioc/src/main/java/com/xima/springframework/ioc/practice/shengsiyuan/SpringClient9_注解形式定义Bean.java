@@ -4,7 +4,7 @@ import com.xima.springframework.ioc.practice.shengsiyuan.annotation.bean.Person;
 import com.xima.springframework.ioc.practice.shengsiyuan.annotation.config.PersonConfiguration;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class SpringClient9 {
+public class SpringClient9_注解形式定义Bean {
 
     public static void main(String[] args) {
         AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext();
