@@ -12,6 +12,16 @@ import org.springframework.core.io.Resource;
 /**
  * jvm参数
  * -Dsun.misc.ProxyGenerator.saveGeneratedFiles=true
+ *
+ * 针对于数据库事务的操作：
+ * setAutoCommit(false);
+ *
+ * target.method();
+ *
+ * conn.commit();
+ * or
+ * conn.rollback();
+ *
  */
 public class SpringClient2_aop事务处理 {
 
