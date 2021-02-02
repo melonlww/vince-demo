@@ -5,6 +5,12 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+
+/**
+ * 加载Driver类的时候将驱动注册到registeredDrivers中
+ *
+ * DriverManager.getConnection时，会从registeredDrivers取出驱动
+ */
 public class Test {
     public static void main(String[] args) {
         try {
