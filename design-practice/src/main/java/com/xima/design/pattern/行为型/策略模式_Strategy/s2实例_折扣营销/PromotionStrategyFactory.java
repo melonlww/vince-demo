@@ -1,5 +1,10 @@
 package com.xima.design.pattern.行为型.策略模式_Strategy.s2实例_折扣营销;
 
+import com.xima.design.pattern.行为型.策略模式_Strategy.s2实例_折扣营销.strategy.CashBackStrategy;
+import com.xima.design.pattern.行为型.策略模式_Strategy.s2实例_折扣营销.strategy.CouponStrategy;
+import com.xima.design.pattern.行为型.策略模式_Strategy.s2实例_折扣营销.strategy.EmptyStrategy;
+import com.xima.design.pattern.行为型.策略模式_Strategy.s2实例_折扣营销.strategy.GroupBuyStrategy;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
