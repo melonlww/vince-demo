@@ -9,6 +9,8 @@ public class PersonConfiguration {
 
     @Bean(name="person_zhangsan")
     public Person getPerson(){
+
+        System.out.println("【bean】hello， create bean person_zhangsan");
         Person person = new Person();
         person.setId(28);
         person.setName("zhangsan");
