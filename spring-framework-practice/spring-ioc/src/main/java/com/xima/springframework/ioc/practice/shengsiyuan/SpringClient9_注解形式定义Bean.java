@@ -22,7 +22,11 @@ public class SpringClient9_注解形式定义Bean {
 
         System.out.println("finish refresh");
 
+        PersonConfiguration personConfiguration = (PersonConfiguration)annotationConfigApplicationContext.getBean("personConfiguration");
         Person person = (Person)annotationConfigApplicationContext.getBean("person_zhangsan");
+
+        System.out.println(personConfiguration.getClass());
+        System.out.println(person.getClass());
         System.out.println(person);
     }
 }
