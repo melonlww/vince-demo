@@ -1,0 +1,45 @@
+package com.xima.design.pattern.行为型.责任链模式_ChainOfResponsibility.s3实例_权限校验_结合构造器模式;
+
+public class Member {
+    private String loginName;
+    private String loginPass;
+    private String roleName;
+
+    public Member(String loginName, String loginPass) {
+        this.loginName = loginName;
+        this.loginPass = loginPass;
+    }
+
+    public String getLoginName() {
+        return loginName;
+    }
+
+    public void setLoginName(String loginName) {
+        this.loginName = loginName;
+    }
+
+    public String getLoginPass() {
+        return loginPass;
+    }
+
+    public void setLoginPass(String loginPass) {
+        this.loginPass = loginPass;
+    }
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "loginName='" + loginName + '\'' +
+                ", loginPass='" + loginPass + '\'' +
+                ", roleName='" + roleName + '\'' +
+                '}';
+    }
+}

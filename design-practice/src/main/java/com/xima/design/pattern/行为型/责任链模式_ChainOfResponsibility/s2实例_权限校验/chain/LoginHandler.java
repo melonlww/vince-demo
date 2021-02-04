@@ -9,6 +9,8 @@ public class LoginHandler extends Handler {
         System.out.println("登录成功");
 
         member.setRoleName("管理员");
-        next.doHandler(member);
+        if (next != null) {
+            next.doHandler(member);
+        }
     }
 }

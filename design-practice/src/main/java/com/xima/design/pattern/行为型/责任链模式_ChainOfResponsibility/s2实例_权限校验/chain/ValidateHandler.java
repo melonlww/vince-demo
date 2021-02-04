@@ -13,6 +13,8 @@ public class ValidateHandler extends Handler {
             return;
         }
         System.out.println("用户和密码不为空，可往下执行");
-        next.doHandler(member);
+        if (next != null) {
+            next.doHandler(member);
+        }
     }
 }
