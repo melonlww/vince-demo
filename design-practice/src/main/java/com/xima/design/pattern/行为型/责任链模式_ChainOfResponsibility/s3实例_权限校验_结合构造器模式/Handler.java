@@ -29,6 +29,5 @@ public abstract class Handler<T> {
         public Handler<T> build() {
             return this.head;
         }
-
     }
 }
