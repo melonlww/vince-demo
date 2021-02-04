@@ -4,7 +4,7 @@ public abstract class Handler<T> {
 
     protected Handler next;
 
-    public void next(Handler next){
+    public void next(Handler next) {
         this.next = next;
     }
 
@@ -17,7 +17,7 @@ public abstract class Handler<T> {
         protected Handler<T> tail;
 
         public Builder<T> addHandler(Handler handler) {
-            if(this.head ==null){
+            if (this.head == null) {
                 this.head = this.tail = handler;
                 return this;
             }
