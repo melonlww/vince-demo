@@ -50,19 +50,24 @@ public class OrderStateMachineConfig extends StateMachineConfigurerAdapter<Order
                 .withExternal().source(OrderStatus.WAIT_RECEIVE).target(OrderStatus.FINISH).event(OrderStatusChangeEvent.RECEIVED);
     }
 
+    /**
+     * 持久化配置
+     * 实际使用中，可配合redis等进行持久化操作
+     * @return
+     */
     @Bean
-    public DefaultStateMachinePersister persister() {
-        return new DefaultStateMachinePersister(new StateMachinePersist<Object, Object, Order>() {
+    public DefaultStateMachinePersister<OrderStatus, OrderStatusChangeEvent, Order> persister() {
+        return new DefaultStateMachinePersister(new StateMachinePersist<OrderStatus, OrderStatusChangeEvent, Order>() {
 
             @Override
-            public void write(StateMachineContext<Object, Object> stateMachineContext, Order order) throws Exception {
+            public void write(StateMachineContext<OrderStatus, OrderStatusChangeEvent> stateMachineContext, Order order) throws Exception {
                 //此处并没有持久化操作
             }
 
             @Override
-            public StateMachineContext<Object, Object> read(Order order) throws Exception {
+            public StateMachineContext<OrderStatus, OrderStatusChangeEvent> read(Order order) throws Exception {
                 //此处直接获取order中的状态，其实并没有进行持久化读取操作
-                return new DefaultStateMachineContext<Object, Object>(order.getStatus(), null, null, null);
+                return new DefaultStateMachineContext<OrderStatus, OrderStatusChangeEvent>(order.getStatus(), null, null, null);
             }
         });
     }
