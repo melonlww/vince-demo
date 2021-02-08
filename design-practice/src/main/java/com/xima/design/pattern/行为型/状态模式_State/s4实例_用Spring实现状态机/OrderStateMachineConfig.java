@@ -1,4 +1,4 @@
-package com.xima.design.pattern.行为型.状态模式_State.s4实例_订单_Spring状态机;
+package com.xima.design.pattern.行为型.状态模式_State.s4实例_用Spring实现状态机;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -51,7 +51,7 @@ public class OrderStateMachineConfig extends StateMachineConfigurerAdapter<Order
     }
 
     @Bean
-    public DefaultStateMachinePersister<Object, Object, Order> persister() {
+    public DefaultStateMachinePersister persister() {
         return new DefaultStateMachinePersister(new StateMachinePersist<Object, Object, Order>() {
 
             @Override

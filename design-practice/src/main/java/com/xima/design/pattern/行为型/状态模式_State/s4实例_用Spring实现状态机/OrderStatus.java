@@ -1,4 +1,4 @@
-package com.xima.design.pattern.行为型.状态模式_State.s4实例_订单_Spring状态机;
+package com.xima.design.pattern.行为型.状态模式_State.s4实例_用Spring实现状态机;
 
 /**
  * 订单状态
