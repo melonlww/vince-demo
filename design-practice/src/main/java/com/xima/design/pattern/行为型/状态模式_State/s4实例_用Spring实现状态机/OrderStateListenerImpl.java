@@ -30,7 +30,4 @@ public class OrderStateListenerImpl {
         System.out.println("收货，状态机反馈信息：" + message.getHeaders().toString());
         return true;
     }
-
-
-
 }

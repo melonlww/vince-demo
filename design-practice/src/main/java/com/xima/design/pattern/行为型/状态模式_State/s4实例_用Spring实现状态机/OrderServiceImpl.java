@@ -35,7 +35,7 @@ public class OrderServiceImpl implements IOrderService {
     public Order pay(int id) {
         Order order = orders.get(id);
         System.out.println("线程名称：" + Thread.currentThread().getName() + "尝试支付，订单号：" + id);
-        Message message = MessageBuilder.withPayload(OrderStatusChangeEvent.PAYED).setHeader("order", order).build();
+        Message<OrderStatusChangeEvent> message = MessageBuilder.withPayload(OrderStatusChangeEvent.PAYED).setHeader("order", order).build();
         if (!sendEvent(message, order)) {
             System.out.println("线程名称：" + Thread.currentThread().getName() + "支付失败，状态异常，订单号：" + id);
         }
@@ -46,7 +46,7 @@ public class OrderServiceImpl implements IOrderService {
     public Order deliver(int id) {
         Order order = orders.get(id);
         System.out.println("线程名称：" + Thread.currentThread().getName() + "尝试发货，订单号：" + id);
-        Message message = MessageBuilder.withPayload(OrderStatusChangeEvent.DELIVERY).setHeader("order", order).build();
+        Message<OrderStatusChangeEvent> message = MessageBuilder.withPayload(OrderStatusChangeEvent.DELIVERY).setHeader("order", order).build();
         if (!sendEvent(message, order)) {
             System.out.println("线程名称：" + Thread.currentThread().getName() + "发货失败，状态异常，订单号：" + id);
         }
@@ -57,7 +57,7 @@ public class OrderServiceImpl implements IOrderService {
     public Order receive(int id) {
         Order order = orders.get(id);
         System.out.println("线程名称：" + Thread.currentThread().getName() + "尝试收货，订单号：" + id);
-        Message message = MessageBuilder.withPayload(OrderStatusChangeEvent.RECEIVED).setHeader("order", order).build();
+        Message<OrderStatusChangeEvent> message = MessageBuilder.withPayload(OrderStatusChangeEvent.RECEIVED).setHeader("order", order).build();
         if (!sendEvent(message, order)) {
             System.out.println("线程名称：" + Thread.currentThread().getName() + "发货收货，状态异常，订单号：" + id);
         }
