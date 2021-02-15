@@ -28,6 +28,12 @@
             <version>8.0.20</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>18.0</version>
+        </dependency>
+
         <!--spring -->
         <dependency>
             <groupId>org.springframework</groupId>
