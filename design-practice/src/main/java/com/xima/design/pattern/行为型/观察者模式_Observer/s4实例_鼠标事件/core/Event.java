@@ -1,12 +1,14 @@
 package com.xima.design.pattern.行为型.观察者模式_Observer.s4实例_鼠标事件.core;
 
+import com.xima.design.pattern.行为型.观察者模式_Observer.s4实例_鼠标事件.events.EventListener;
+
 import java.lang.reflect.Method;
 
 public class Event {
     //事件源，动作由谁发出的
     private Object source;
     //事件触发，要通知谁（观察者）
-    private Object target;
+    private EventListener target;
     //观察者给的回应
     private Method callback;
     //事件的名称
@@ -14,7 +16,7 @@ public class Event {
     //事件触发的事件
     private long time;
 
-    public Event(Object target, Method callback) {
+    public Event(EventListener target, Method callback) {
         this.target = target;
         this.callback = callback;
     }
@@ -28,11 +30,11 @@ public class Event {
         return this;
     }
 
-    public Object getTarget() {
+    public EventListener getTarget() {
         return target;
     }
 
-    public Event setTarget(Object target) {
+    public Event setTarget(EventListener target) {
         this.target = target;
         return this;
     }

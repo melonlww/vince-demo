@@ -1,5 +1,7 @@
 package com.xima.design.pattern.行为型.观察者模式_Observer.s4实例_鼠标事件.core;
 
+import com.xima.design.pattern.行为型.观察者模式_Observer.s4实例_鼠标事件.events.EventListener;
+
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
@@ -8,11 +10,11 @@ public class EventObservable {
 
     protected Map<String, Event> events = new HashMap<>();
 
-    public void addListener(String eventType, Object target, Method callback) {
+    public void addListener(String eventType, EventListener target, Method callback) {
         events.put(eventType, new Event(target, callback));
     }
 
-    public void addListener(String eventType, Object target) {
+    public void addListener(String eventType, EventListener target) {
         try {
             this.addListener(eventType, target, target.getClass().getMethod("on" + toUpperFirstCase(eventType), Event.class));
         } catch (Exception e) {
