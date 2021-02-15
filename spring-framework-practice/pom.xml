@@ -10,6 +10,7 @@
     <modules>
         <module>spring-ioc</module>
         <module>spring-aop</module>
+        <module>geektime</module>
     </modules>
     <name>spring-framework-practice</name>
 
