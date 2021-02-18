@@ -12,6 +12,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>s1-java-beans-demo</module>
+        <module>s2-ioc-container-overview</module>
     </modules>
 
     <properties>
