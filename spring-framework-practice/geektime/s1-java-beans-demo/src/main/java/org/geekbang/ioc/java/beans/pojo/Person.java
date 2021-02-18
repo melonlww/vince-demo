@@ -1,10 +1,14 @@
 package org.geekbang.ioc.java.beans.pojo;
 
+import java.util.Date;
+
 public class Person {
 
     private String name;
 
     private int age;
+
+    private Date birth;
 
     public String getName() {
         return name;
@@ -20,5 +24,22 @@ public class Person {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public Date getBirth() {
+        return birth;
+    }
+
+    public void setBirth(Date birth) {
+        this.birth = birth;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", birth=" + birth +
+                '}';
     }
 }
