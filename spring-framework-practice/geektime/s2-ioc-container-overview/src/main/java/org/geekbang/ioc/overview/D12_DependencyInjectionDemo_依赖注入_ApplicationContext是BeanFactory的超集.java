@@ -31,6 +31,16 @@ import org.springframework.core.env.Environment;
  * }
  * 上下文中组合了一个beanFactory  在接口中又是一个is的关系
  *
+ *
+ * ApplicationContext 除了IoC容器角色，还有提供：
+ *      面向切面（AOP）
+ *      配置元信息（Configuration Metadata）
+ *      资源管理（Resources）
+ *      事件（Events）
+ *      国际化（i18n）
+ *      注解（Annotations）
+ *      Environment抽象（Environment Abstraction）
+ *
  */
 public class D12_DependencyInjectionDemo_依赖注入_ApplicationContext是BeanFactory的超集 {
 

@@ -20,6 +20,7 @@ import org.geekbang.ioc.overview.annotation.Super;
 import org.geekbang.ioc.overview.domain.User;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.ListableBeanFactory;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Map;
 
@@ -29,7 +30,12 @@ import java.util.Map;
  */
 public class D5_DependencyLookupDemo_依赖查找_通过注解查找 {
 
-
+    public static void main(String[] args) {
+        // 配置 XML 配置文件
+        // 启动 Spring 应用上下文
+        BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-lookup-context3.xml");
+        lookupByAnnotationType(beanFactory);
+    }
 
     private static void lookupByAnnotationType(BeanFactory beanFactory) {
         if (beanFactory instanceof ListableBeanFactory) {
