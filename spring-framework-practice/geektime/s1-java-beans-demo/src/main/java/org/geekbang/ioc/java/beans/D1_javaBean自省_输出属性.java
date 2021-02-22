@@ -18,7 +18,7 @@ import java.util.stream.Stream;
  * java.beans.PropertyDescriptor[name=name; values={expert=false; visualUpdate=false; hidden=false; enumerationValues=[Ljava.lang.Object;@1d057a39; required=false}; propertyType=class java.lang.String; readMethod=public java.lang.String org.geekbang.ioc.java.beans.pojo.Person.getName(); writeMethod=public void org.geekbang.ioc.java.beans.pojo.Person.setName(java.lang.String)]
  *
  */
-public class d1_javaBean自省_输出属性 {
+public class D1_javaBean自省_输出属性 {
 
     public static void main(String[] args) throws IntrospectionException {
         //java bean自省方法 Introspector

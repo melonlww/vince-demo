@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 /**
  * {@link BeanInfo}
  */
-public class d2_javaBean自省_类型转换 {
+public class D2_javaBean自省_类型转换 {
 
     public static void main(String[] args) throws IntrospectionException {
         BeanInfo beanInfo = Introspector.getBeanInfo(Person.class, Object.class);
