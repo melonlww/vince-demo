@@ -25,7 +25,7 @@ import org.springframework.core.env.Environment;
 /**
  * 依赖注入的beanFactory和依赖查找的beanFactory并非同一个
  */
-public class D11_DependencyInjectionDemo_依赖注入_自动注入_Bean依赖的三个来源 {
+public class D11_DependencyInjectionDemo_依赖注入_Bean依赖的三个来源 {
 
     public static void main(String[] args) {
         BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-injection-context5.xml");
@@ -35,6 +35,7 @@ public class D11_DependencyInjectionDemo_依赖注入_自动注入_Bean依赖的
 //        System.out.println(userRepository.getUsers());
         // 依赖来源二：依赖注入（內建依赖）
         System.out.println(userRepository.getBeanFactory());
+        //false
 //        System.out.println(userRepository.getBeanFactory() == beanFactory);
 
         ObjectFactory objectFactory = userRepository.getObjectFactory();

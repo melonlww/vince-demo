@@ -24,7 +24,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 /**
  * 依赖注入的beanFactory和依赖查找的beanFactory并非同一个
  */
-public class D9_DependencyInjectionDemo_依赖注入_自动注入_Spring内建依赖_延迟 {
+public class D9_DependencyInjectionDemo_依赖注入_Spring内建依赖_延迟 {
 
     public static void main(String[] args) {
         BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-injection-context4.xml");

@@ -16,29 +16,31 @@
  */
 package org.geekbang.ioc.overview;
 
-import org.geekbang.ioc.overview.repository.UserRepository2;
+import org.geekbang.ioc.overview.repository.UserRepository3;
+import org.geekbang.ioc.overview.repository.UserRepository4;
 import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.env.Environment;
 
 /**
  * 依赖注入的beanFactory和依赖查找的beanFactory并非同一个
  */
-public class D8_DependencyInjectionDemo_依赖注入_自动注入_Spring内建依赖_注入的beanFactory与查找的并非同一个 {
+public class D10_DependencyInjectionDemo_依赖注入_Spring内建依赖_注入的beanFactory与查找的是同一个 {
 
     public static void main(String[] args) {
-        BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-injection-context3.xml");
+        BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-injection-context5.xml");
 
         // 依赖来源一：自定义 Bean
-        UserRepository2 userRepository = beanFactory.getBean("userRepository", UserRepository2.class);
-        System.out.println(userRepository.getUsers());
+        UserRepository4 userRepository = beanFactory.getBean("userRepository", UserRepository4.class);
+//        System.out.println(userRepository.getUsers());
         // 依赖来源二：依赖注入（內建依赖）
         System.out.println(userRepository.getBeanFactory());
-        //false
-        System.out.println(userRepository.getBeanFactory() == beanFactory);
+//        System.out.println(userRepository.getBeanFactory() == beanFactory);
 
-        //依赖查找
-        //Exception in thread "main" org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.beans.factory.BeanFactory' available
-//        System.out.println(beanFactory.getBean(BeanFactory.class));
+        ObjectFactory objectFactory = userRepository.getObjectFactory();
+        //true
+        System.out.println(objectFactory.getObject() == beanFactory);
     }
 
 
