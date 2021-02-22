@@ -20,7 +20,6 @@ import org.geekbang.ioc.overview.annotation.Super;
 import org.geekbang.ioc.overview.domain.User;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.ListableBeanFactory;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Map;
 

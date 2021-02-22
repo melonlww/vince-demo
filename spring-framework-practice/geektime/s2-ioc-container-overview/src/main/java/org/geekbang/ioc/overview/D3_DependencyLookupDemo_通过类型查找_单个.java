@@ -18,7 +18,6 @@ package org.geekbang.ioc.overview;
 
 import org.geekbang.ioc.overview.domain.User;
 import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
