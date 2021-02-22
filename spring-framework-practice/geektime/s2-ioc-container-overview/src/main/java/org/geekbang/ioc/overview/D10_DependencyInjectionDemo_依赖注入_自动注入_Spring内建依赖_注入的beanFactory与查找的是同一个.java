@@ -21,6 +21,7 @@ import org.geekbang.ioc.overview.repository.UserRepository4;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.env.Environment;
 
 /**
  * 依赖注入的beanFactory和依赖查找的beanFactory并非同一个
@@ -33,7 +34,7 @@ public class D10_DependencyInjectionDemo_依赖注入_自动注入_Spring内建�
         // 依赖来源一：自定义 Bean
         UserRepository4 userRepository = beanFactory.getBean("userRepository", UserRepository4.class);
 //        System.out.println(userRepository.getUsers());
-        //依赖注入
+        // 依赖来源二：依赖注入（內建依赖）
         System.out.println(userRepository.getBeanFactory());
 //        System.out.println(userRepository.getBeanFactory() == beanFactory);
 
