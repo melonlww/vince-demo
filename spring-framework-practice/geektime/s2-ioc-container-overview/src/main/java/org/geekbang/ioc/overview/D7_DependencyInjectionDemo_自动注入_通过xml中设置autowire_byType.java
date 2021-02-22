@@ -17,6 +17,7 @@
 package org.geekbang.ioc.overview;
 
 import org.geekbang.ioc.overview.repository.UserRepository;
+import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -26,10 +27,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class D7_DependencyInjectionDemo_自动注入_通过xml中设置autowire_byType {
 
     public static void main(String[] args) {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-injection-context2.xml");
+        BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-injection-context2.xml");
 
         // 依赖来源一：自定义 Bean
-        UserRepository userRepository = applicationContext.getBean("userRepository", UserRepository.class);
+        UserRepository userRepository = beanFactory.getBean("userRepository", UserRepository.class);
 
         System.out.println(userRepository.getUsers());
 

@@ -16,26 +16,22 @@
  */
 package org.geekbang.ioc.overview;
 
-import org.geekbang.ioc.overview.repository.UserRepository;
-import org.springframework.beans.factory.BeanFactory;
+import org.geekbang.ioc.overview.repository.UserRepository2;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * 依赖注入示例
- *
- * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
- * @since
  */
-public class D6_DependencyInjectionDemo_手动注入_通过xml配置 {
+public class D8_DependencyInjectionDemo_自动注入_Spring内置对象 {
 
     public static void main(String[] args) {
-        BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-injection-context.xml");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-injection-context2.xml");
 
         // 依赖来源一：自定义 Bean
-        UserRepository userRepository = beanFactory.getBean("userRepository", UserRepository.class);
+        UserRepository2 userRepository = applicationContext.getBean("userRepository", UserRepository2.class);
 
-        System.out.println(userRepository.getUsers());
+        System.out.println(userRepository.getBeanFactory());
 
     }
 
