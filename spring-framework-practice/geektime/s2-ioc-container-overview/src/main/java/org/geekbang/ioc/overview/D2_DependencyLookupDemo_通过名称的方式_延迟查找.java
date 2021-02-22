@@ -18,19 +18,27 @@ package org.geekbang.ioc.overview;
 
 import org.geekbang.ioc.overview.domain.User;
 import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * 依赖查找示例
  * 1. 通过名称的方式来查找
  */
-public class  D1_DependencyLookupDemo {
+public class D2_DependencyLookupDemo_通过名称的方式_延迟查找 {
 
     public static void main(String[] args) {
         // 配置 XML 配置文件
         // 启动 Spring 应用上下文
-        BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-lookup-context.xml");
-        User user = (User)beanFactory.getBean("user");
-        System.out.println(user);
+        BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-lookup-context2.xml");
+        lookupInLazy(beanFactory);
     }
+
+    private static void lookupInLazy(BeanFactory beanFactory) {
+        ObjectFactory<User> objectFactory = (ObjectFactory<User>) beanFactory.getBean("objectFactory");
+        User user = objectFactory.getObject();
+        System.out.println("延迟查找：" + user);
+    }
+
+
 }
