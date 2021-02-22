@@ -24,7 +24,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * 依赖查找示例
  * 1. 通过名称的方式来查找
  */
-public class D1_DependencyLookupDemo_通过名称的方式_实时查找 {
+public class D1_DependencyLookupDemo_通过名称查找_实时 {
 
     public static void main(String[] args) {
         // 配置 XML 配置文件
