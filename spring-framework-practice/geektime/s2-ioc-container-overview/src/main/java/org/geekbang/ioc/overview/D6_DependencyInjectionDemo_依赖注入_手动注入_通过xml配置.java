@@ -16,25 +16,25 @@
  */
 package org.geekbang.ioc.overview;
 
-import org.geekbang.ioc.overview.domain.User;
+import org.geekbang.ioc.overview.repository.UserRepository;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- * 依赖查找示例
- * 1. 通过名称的方式来查找
+ * 依赖注入示例
+ *
  */
-public class D3_DependencyLookupDemo_通过类型查找_单个 {
+public class D6_DependencyInjectionDemo_依赖注入_手动注入_通过xml配置 {
 
     public static void main(String[] args) {
-        // 配置 XML 配置文件
-        // 启动 Spring 应用上下文
-        BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-lookup-context3.xml");
-        lookupByType(beanFactory);
+        BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-injection-context.xml");
+
+        // 依赖来源一：自定义 Bean
+        UserRepository userRepository = beanFactory.getBean("userRepository", UserRepository.class);
+
+        System.out.println(userRepository.getUsers());
+
     }
 
-    private static void lookupByType(BeanFactory beanFactory) {
-        User user =  beanFactory.getBean(User.class);
-        System.out.println("实时查找：" + user);
-    }
+
 }

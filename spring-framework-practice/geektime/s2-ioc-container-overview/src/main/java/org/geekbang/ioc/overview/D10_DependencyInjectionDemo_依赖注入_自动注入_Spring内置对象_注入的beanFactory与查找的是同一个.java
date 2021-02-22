@@ -16,26 +16,30 @@
  */
 package org.geekbang.ioc.overview;
 
-import org.geekbang.ioc.overview.repository.UserRepository;
+import org.geekbang.ioc.overview.repository.UserRepository3;
+import org.geekbang.ioc.overview.repository.UserRepository4;
 import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- * 依赖注入示例
- *
- * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
- * @since
+ * 依赖注入的beanFactory和依赖查找的beanFactory并非同一个
  */
-public class D6_DependencyInjectionDemo_手动注入_通过xml配置 {
+public class D10_DependencyInjectionDemo_依赖注入_自动注入_Spring内置对象_注入的beanFactory与查找的是同一个 {
 
     public static void main(String[] args) {
-        BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-injection-context.xml");
+        BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-injection-context5.xml");
 
         // 依赖来源一：自定义 Bean
-        UserRepository userRepository = beanFactory.getBean("userRepository", UserRepository.class);
+        UserRepository4 userRepository = beanFactory.getBean("userRepository", UserRepository4.class);
+//        System.out.println(userRepository.getUsers());
+        //依赖注入
+        System.out.println(userRepository.getBeanFactory());
+//        System.out.println(userRepository.getBeanFactory() == beanFactory);
 
-        System.out.println(userRepository.getUsers());
-
+        ObjectFactory objectFactory = userRepository.getObjectFactory();
+        //true
+        System.out.println(objectFactory.getObject() == beanFactory);
     }
 
 

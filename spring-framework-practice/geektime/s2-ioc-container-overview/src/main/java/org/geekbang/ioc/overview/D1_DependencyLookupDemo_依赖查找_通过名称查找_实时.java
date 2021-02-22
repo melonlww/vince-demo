@@ -18,29 +18,23 @@ package org.geekbang.ioc.overview;
 
 import org.geekbang.ioc.overview.domain.User;
 import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import java.util.Map;
 
 /**
  * 依赖查找示例
  * 1. 通过名称的方式来查找
  */
-public class D4_DependencyLookupDemo_通过类型查找_多个bean {
+public class D1_DependencyLookupDemo_依赖查找_通过名称查找_实时 {
 
     public static void main(String[] args) {
         // 配置 XML 配置文件
         // 启动 Spring 应用上下文
-        BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-lookup-context3.xml");
-        lookupCollectionByType(beanFactory);
+        BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-lookup-context.xml");
+        lookupInRealTime(beanFactory);
     }
 
-    private static void lookupCollectionByType(BeanFactory beanFactory) {
-        if (beanFactory instanceof ListableBeanFactory) {
-            ListableBeanFactory listableBeanFactory = (ListableBeanFactory) beanFactory;
-            Map<String, User> users = listableBeanFactory.getBeansOfType(User.class);
-            System.out.println("查找到的所有的 User 集合对象：" + users);
-        }
+    private static void lookupInRealTime(BeanFactory beanFactory) {
+        User user = (User) beanFactory.getBean("user");
+        System.out.println("实时查找：" + user);
     }
 }

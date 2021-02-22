@@ -24,17 +24,17 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * 依赖查找示例
  * 1. 通过名称的方式来查找
  */
-public class D1_DependencyLookupDemo_通过名称查找_实时 {
+public class D3_DependencyLookupDemo_依赖查找_通过类型查找_单个 {
 
     public static void main(String[] args) {
         // 配置 XML 配置文件
         // 启动 Spring 应用上下文
-        BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-lookup-context.xml");
-        lookupInRealTime(beanFactory);
+        BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-lookup-context3.xml");
+        lookupByType(beanFactory);
     }
 
-    private static void lookupInRealTime(BeanFactory beanFactory) {
-        User user = (User) beanFactory.getBean("user");
+    private static void lookupByType(BeanFactory beanFactory) {
+        User user =  beanFactory.getBean(User.class);
         System.out.println("实时查找：" + user);
     }
 }

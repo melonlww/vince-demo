@@ -3,19 +3,20 @@ package org.geekbang.ioc.overview.repository;
 import org.geekbang.ioc.overview.domain.User;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.ObjectFactory;
+import org.springframework.context.ApplicationContext;
 
 import java.util.Collection;
 
 /**
  * 用户信息仓库
  */
-public class UserRepository3 {
+public class UserRepository4 {
 
     private Collection<User> users; // 自定义 Bean
 
     private BeanFactory beanFactory; //内建非Bean对象（依赖）
 
-    private ObjectFactory<User> userObjectFactory;
+    private ObjectFactory<ApplicationContext> objectFactory;
 
     public Collection<User> getUsers() {
         return users;
@@ -33,11 +34,11 @@ public class UserRepository3 {
         this.beanFactory = beanFactory;
     }
 
-    public ObjectFactory<User> getUserObjectFactory() {
-        return userObjectFactory;
+    public ObjectFactory<ApplicationContext> getObjectFactory() {
+        return objectFactory;
     }
 
-    public void setUserObjectFactory(ObjectFactory<User> userObjectFactory) {
-        this.userObjectFactory = userObjectFactory;
+    public void setObjectFactory(ObjectFactory<ApplicationContext> objectFactory) {
+        this.objectFactory = objectFactory;
     }
 }
