@@ -21,7 +21,7 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- * 依赖注入示例
+ * 依赖注入的beanFactory和依赖查找的beanFactory并非同一个
  */
 public class D8_DependencyInjectionDemo_自动注入_Spring内置对象 {
 
@@ -30,10 +30,14 @@ public class D8_DependencyInjectionDemo_自动注入_Spring内置对象 {
 
         // 依赖来源一：自定义 Bean
         UserRepository2 userRepository = beanFactory.getBean("userRepository", UserRepository2.class);
-
+        System.out.println(userRepository.getUsers());
+        //依赖注入
         System.out.println(userRepository.getBeanFactory());
         System.out.println(userRepository.getBeanFactory() == beanFactory);
 
+        //依赖查找
+        //Exception in thread "main" org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.beans.factory.BeanFactory' available
+//        System.out.println(beanFactory.getBean(BeanFactory.class));
     }
 
 

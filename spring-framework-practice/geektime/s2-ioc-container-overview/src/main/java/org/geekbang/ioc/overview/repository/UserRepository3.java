@@ -8,7 +8,7 @@ import java.util.Collection;
 /**
  * 用户信息仓库
  */
-public class UserRepository2 {
+public class UserRepository3 {
 
     private Collection<User> users; // 自定义 Bean
 
