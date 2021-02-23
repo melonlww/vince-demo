@@ -29,7 +29,9 @@ public class D9_DependencyInjectionDemo_依赖注入_Spring内建依赖_延迟 {
     public static void main(String[] args) {
         BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-injection-context4.xml");
 
-        // 依赖来源一：自定义 Bean
+        /**
+         * 依赖来源一：自定义 Bean
+         */
         UserRepository3 userRepository = beanFactory.getBean("userRepository", UserRepository3.class);
         System.out.println(userRepository.getUsers());
         //依赖注入

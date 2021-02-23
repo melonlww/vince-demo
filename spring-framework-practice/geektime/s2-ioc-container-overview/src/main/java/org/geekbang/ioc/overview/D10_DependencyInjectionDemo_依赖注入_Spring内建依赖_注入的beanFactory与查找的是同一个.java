@@ -31,10 +31,14 @@ public class D10_DependencyInjectionDemo_依赖注入_Spring内建依赖_注入�
     public static void main(String[] args) {
         BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-injection-context5.xml");
 
-        // 依赖来源一：自定义 Bean
+        /**
+         * 依赖来源一：自定义 Bean
+         */
         UserRepository4 userRepository = beanFactory.getBean("userRepository", UserRepository4.class);
 //        System.out.println(userRepository.getUsers());
-        // 依赖来源二：依赖注入（內建依赖）
+        /**
+         * 依赖来源二：依赖注入（內建依赖）
+         */
         System.out.println(userRepository.getBeanFactory());
 //        System.out.println(userRepository.getBeanFactory() == beanFactory);
 

@@ -55,7 +55,9 @@ public class D12_DependencyInjectionDemo_依赖注入_ApplicationContext是BeanF
 
     private static void whoIsIoCContainer(UserRepository4 userRepository, ApplicationContext applicationContext) {
 
-        //false     这个表达式为什么不会成立?
+        /**
+         * false     这个表达式为什么不会成立?
+         */
         System.out.println(userRepository.getBeanFactory() == applicationContext);
 
         // ConfigurableApplicationContext <- ApplicationContext <- BeanFactory

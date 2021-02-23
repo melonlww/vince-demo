@@ -30,10 +30,14 @@ public class D11_DependencyInjectionDemo_依赖注入_Bean依赖的三个来源 
     public static void main(String[] args) {
         BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-injection-context5.xml");
 
-        // 依赖来源一：自定义 Bean
+        /**
+         * 依赖来源一：自定义 Bean
+         */
         UserRepository4 userRepository = beanFactory.getBean("userRepository", UserRepository4.class);
 //        System.out.println(userRepository.getUsers());
-        // 依赖来源二：依赖注入（內建依赖）
+        /**
+         * 依赖来源二：依赖注入（內建依赖）
+         */
         System.out.println(userRepository.getBeanFactory());
         //false
 //        System.out.println(userRepository.getBeanFactory() == beanFactory);
@@ -42,7 +46,9 @@ public class D11_DependencyInjectionDemo_依赖注入_Bean依赖的三个来源 
         //true
         System.out.println(objectFactory.getObject() == beanFactory);
 
-        // 依赖来源三：容器內建 Bean
+        /**
+         * 依赖来源三：容器內建 Bean
+         */
         Environment environment = beanFactory.getBean(Environment.class);
         System.out.println("获取 Environment 类型的 Bean：" + environment);
     }
