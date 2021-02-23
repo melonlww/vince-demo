@@ -13,6 +13,7 @@
     <modules>
         <module>s1-java-beans-demo</module>
         <module>s2-ioc-container-overview</module>
+        <module>s3-spring-bean</module>
     </modules>
 
     <properties>
