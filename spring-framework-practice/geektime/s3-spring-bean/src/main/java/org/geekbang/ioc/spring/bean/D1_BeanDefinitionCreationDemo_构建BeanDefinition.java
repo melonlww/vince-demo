@@ -42,6 +42,8 @@ public class D1_BeanDefinitionCreationDemo_构建BeanDefinition {
         BeanDefinition beanDefinition = beanDefinitionBuilder.getBeanDefinition();
         // BeanDefinition 并非 Bean 终态，可以自定义修改
 
+        beanDefinition.setLazyInit(true);
+        System.out.println(beanDefinition);
 
         /**
          * 构建方式2
@@ -59,5 +61,8 @@ public class D1_BeanDefinitionCreationDemo_构建BeanDefinition {
                 .add("name", "小啊宝");
         // 通过 set MutablePropertyValues 批量操作属性
         genericBeanDefinition.setPropertyValues(propertyValues);
+
+        genericBeanDefinition.setBeanClassName("user");
+        System.out.println(genericBeanDefinition);
     }
 }
