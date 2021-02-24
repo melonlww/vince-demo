@@ -24,7 +24,7 @@ public class D16_BeanInitializationDemo_Bean初始化_三种初始化方式同�
         applicationContext.close();
     }
 
-    @Bean(initMethod = "initUserFactory", destroyMethod = "doDestroy")
+    @Bean(initMethod = "initUserFactory")
     public UserFactory userFactory() {
         return new DefaultUserFactory5();
     }
