@@ -18,13 +18,9 @@ package org.geekbang.ioc.spring.bean;
 
 import org.geekbang.ioc.spring.bean.factory.SpecialUserFactory;
 import org.geekbang.ioc.spring.bean.factory.UserFactory;
-import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import java.util.Iterator;
-import java.util.ServiceLoader;
 
 /**
  * 特殊的 Bean 实例化示例
@@ -32,8 +28,8 @@ import java.util.ServiceLoader;
 public class D12_SpecialBeanInstantiationDemo_Bean实例化_特殊方式_通过AutowireCapableBeanFactory {
 
     public static void main(String[] args){
-//        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:/META-INF/special-bean-instantiation-context.xml");
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:/META-INF/bean-definitions-context.xml");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:/META-INF/special-bean-instantiation-context.xml");
+//        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:/META-INF/bean-definitions-context.xml");
         // 通过 ApplicationContext 获取 AutowireCapableBeanFactory
         AutowireCapableBeanFactory beanFactory = applicationContext.getAutowireCapableBeanFactory();
 
