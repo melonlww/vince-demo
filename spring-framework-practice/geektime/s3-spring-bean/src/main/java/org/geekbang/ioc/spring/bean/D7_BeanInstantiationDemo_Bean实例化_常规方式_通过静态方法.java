@@ -8,18 +8,15 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * Bean 实例化示例
  *
  */
-public class D8_BeanInstantiationDemo_Bean实例化_通过Bean工厂方法 {
+public class D7_BeanInstantiationDemo_Bean实例化_常规方式_通过静态方法 {
 
     public static void main(String[] args) {
         // 配置 XML 配置文件
         // 启动 Spring 应用上下文
-        BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:/META-INF/bean-instantiation-context2.xml");
+        BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:/META-INF/bean-instantiation-context.xml");
         User2 user = beanFactory.getBean("user-by-static-method", User2.class);
-        User2 userByInstanceMethod  = beanFactory.getBean("user-by-instance-method", User2.class);
 
         System.out.println(user);
-        System.out.println(userByInstanceMethod);
-        System.out.println(user == userByInstanceMethod);
 
     }
 }

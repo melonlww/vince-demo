@@ -8,7 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * Bean 实例化示例
  *
  */
-public class D9_BeanInstantiationDemo_Bean实例化_通过FactoryBean方法 {
+public class D9_BeanInstantiationDemo_Bean实例化_常规方式_通过FactoryBean方法 {
 
     public static void main(String[] args) {
         // 配置 XML 配置文件
