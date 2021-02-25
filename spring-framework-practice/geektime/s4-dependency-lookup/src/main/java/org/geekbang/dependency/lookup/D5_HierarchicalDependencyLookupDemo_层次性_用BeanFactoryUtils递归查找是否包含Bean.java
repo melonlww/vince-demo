@@ -28,11 +28,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 /**
  * 层次性依赖查找示例
  *
- * 单个bean
- * BeanFactoryUtils.beanOfTypeIncludingAncestors
- *
- * 集合bean
- * BeanFactoryUtils.beansOfTypeIncludingAncestors
+ * 单个bean  BeanFactoryUtils.beanOfTypeIncludingAncestors
+ * 集合bean  BeanFactoryUtils.beansOfTypeIncludingAncestors
  *
  */
 public class D5_HierarchicalDependencyLookupDemo_层次性_用BeanFactoryUtils递归查找是否包含Bean {
@@ -77,11 +74,11 @@ public class D5_HierarchicalDependencyLookupDemo_层次性_用BeanFactoryUtils�
 
     private static <T> void displayContainsBeanByBeanFactoryUtils(ListableBeanFactory beanFactory, Class<T> type) {
         System.out.printf("BeanFactoryUtils递归查找 BeanFactory[%s] 是否包含 Local Bean[type : %s] : %s\n", beanFactory, type,
+                /**
+                 * 单个bean  BeanFactoryUtils.beanOfTypeIncludingAncestors
+                 * 集合bean  BeanFactoryUtils.beansOfTypeIncludingAncestors
+                 */
                 BeanFactoryUtils.beansOfTypeIncludingAncestors(beanFactory, type));
-        //单个bean
-//        BeanFactoryUtils.beanOfTypeIncludingAncestors
-        //集合bean
-//        BeanFactoryUtils.beansOfTypeIncludingAncestors
     }
 
 
