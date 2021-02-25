@@ -23,6 +23,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 /**
  * 类型安全 依赖查找示例
+ *  小马哥推荐使用ObjectProvider去查找Bean，支持单个和集合
  */
 public class D8_TypeSafetyDependencyLookupDemo_安全的依赖查找 {
 
