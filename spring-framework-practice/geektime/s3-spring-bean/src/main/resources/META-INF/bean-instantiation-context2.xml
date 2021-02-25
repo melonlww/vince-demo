@@ -11,5 +11,5 @@
     <!-- 实例（Bean）方法实例化 Bean -->
     <bean id="user-by-instance-method" factory-bean="userFactory" factory-method="createUser"/>
 
-    <bean id="userFactory" class="org.geekbang.ioc.spring.bean.factory.DefaultUserFactory"/>
+    <bean id="userFactory" class="org.geekbang.spring.bean.factory.DefaultUserFactory"/>
 </beans>
