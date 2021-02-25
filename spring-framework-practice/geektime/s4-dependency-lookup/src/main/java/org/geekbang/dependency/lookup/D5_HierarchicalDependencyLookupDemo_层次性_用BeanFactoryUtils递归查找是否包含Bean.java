@@ -16,9 +16,7 @@
  */
 package org.geekbang.dependency.lookup;
 
-import org.geekbang.ioc.overview.domain.SuperUser;
 import org.geekbang.ioc.overview.domain.User;
-import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryUtils;
 import org.springframework.beans.factory.HierarchicalBeanFactory;
 import org.springframework.beans.factory.ListableBeanFactory;
@@ -29,6 +27,12 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 /**
  * 层次性依赖查找示例
+ *
+ * 单个bean
+ * BeanFactoryUtils.beanOfTypeIncludingAncestors
+ *
+ * 集合bean
+ * BeanFactoryUtils.beansOfTypeIncludingAncestors
  *
  */
 public class D5_HierarchicalDependencyLookupDemo_层次性_用BeanFactoryUtils递归查找是否包含Bean {
@@ -51,7 +55,7 @@ public class D5_HierarchicalDependencyLookupDemo_层次性_用BeanFactoryUtils�
         System.out.println("当前 BeanFactory 的 Parent BeanFactory ： " + beanFactory.getParentBeanFactory());
 
 
-        displayContainsBeanByBeanFactoryUtils(beanFactory, SuperUser.class);
+        displayContainsBeanByBeanFactoryUtils(beanFactory, User.class);
 
         // 启动应用上下文
         applicationContext.refresh();
@@ -73,7 +77,11 @@ public class D5_HierarchicalDependencyLookupDemo_层次性_用BeanFactoryUtils�
 
     private static <T> void displayContainsBeanByBeanFactoryUtils(ListableBeanFactory beanFactory, Class<T> type) {
         System.out.printf("BeanFactoryUtils递归查找 BeanFactory[%s] 是否包含 Local Bean[type : %s] : %s\n", beanFactory, type,
-                BeanFactoryUtils.beanOfTypeIncludingAncestors(beanFactory, type));
+                BeanFactoryUtils.beansOfTypeIncludingAncestors(beanFactory, type));
+        //单个bean
+//        BeanFactoryUtils.beanOfTypeIncludingAncestors
+        //集合bean
+//        BeanFactoryUtils.beansOfTypeIncludingAncestors
     }
 
 
