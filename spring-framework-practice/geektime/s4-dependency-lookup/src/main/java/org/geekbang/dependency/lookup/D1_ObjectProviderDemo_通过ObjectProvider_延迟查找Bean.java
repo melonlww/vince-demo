@@ -1,4 +1,4 @@
-package dependency.lookup;
+package org.geekbang.dependency.lookup;
 
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
