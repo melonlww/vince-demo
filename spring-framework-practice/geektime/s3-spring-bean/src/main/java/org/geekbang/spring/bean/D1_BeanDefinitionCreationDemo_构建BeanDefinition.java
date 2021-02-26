@@ -42,7 +42,7 @@ public class D1_BeanDefinitionCreationDemo_构建BeanDefinition {
         BeanDefinition beanDefinition = beanDefinitionBuilder.getBeanDefinition();
         // BeanDefinition 并非 Bean 终态，可以自定义修改
 
-        beanDefinition.setLazyInit(true);
+//        beanDefinition.setLazyInit(true);
         System.out.println(beanDefinition);
 
         /**
