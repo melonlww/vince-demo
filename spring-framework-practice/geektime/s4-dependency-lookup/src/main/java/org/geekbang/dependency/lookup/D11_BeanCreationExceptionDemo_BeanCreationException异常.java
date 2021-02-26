@@ -30,10 +30,10 @@ public class D11_BeanCreationExceptionDemo_BeanCreationException异常 {
 
     static class POJO implements InitializingBean {
 
-        @PostConstruct // CommonAnnotationBeanPostProcessor
-        public void init() throws Throwable {
-            throw new Throwable("init() : For purposes...");
-        }
+//        @PostConstruct // CommonAnnotationBeanPostProcessor
+//        public void init() throws Throwable {
+//            throw new Throwable("init() : For purposes...");
+//        }
 
         @Override
         public void afterPropertiesSet() throws Exception {
