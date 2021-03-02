@@ -15,6 +15,7 @@
         <module>s2-ioc-container-overview</module>
         <module>s3-spring-bean</module>
         <module>s4-dependency-lookup</module>
+        <module>s5-dependency-injection</module>
     </modules>
 
     <properties>
