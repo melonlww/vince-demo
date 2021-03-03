@@ -21,18 +21,16 @@ import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 
 /**
+ * 实际开发中不推荐使用autowire的形式自动注入
+ *
  * "byName" Autowiring 依赖 Setter 方法注入示例
  *
+ *  通过autowire="byType"方式注入，根据名称查名称为user的bean，所以找到dependency-lookup-context4.xml文件中配置的user
  *
- * 通过autowire="byType"方式注入，根据类型会找到User类型的bean，查到有两个：superUser，user，
- * 因为dependency-lookup-context4.xml配置文件中将superUser被标注为primary，所以注入此次superUser
- *
- *
- * 打印：
- * UserHolder{user=SuperUser{address='上海'} User{id=1, name='阿奶'}}
- *
+ *  打印：
+ *  UserHolder{user=User{id=1, name='阿奶'}}
  */
-public class D5_AutoWiringByNameDependencySetterInjectionDemo_自动注入_autoWiring_byType_不推荐使用 {
+public class D4_AutoWiringByNameDependencySetterInjectionDemo_自动注入_autoWiring_byName {
 
     public static void main(String[] args) {
 
@@ -40,7 +38,7 @@ public class D5_AutoWiringByNameDependencySetterInjectionDemo_自动注入_autoW
 
         XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
 
-        String xmlResourcePath = "classpath:/META-INF/autowiring-dependency-setter-injection2.xml";
+        String xmlResourcePath = "classpath:/META-INF/autowiring-dependency-setter-injection.xml";
         // 加载 XML 资源，解析并且生成 BeanDefinition
         beanDefinitionReader.loadBeanDefinitions(xmlResourcePath);
         // 依赖查找并且创建 Bean
