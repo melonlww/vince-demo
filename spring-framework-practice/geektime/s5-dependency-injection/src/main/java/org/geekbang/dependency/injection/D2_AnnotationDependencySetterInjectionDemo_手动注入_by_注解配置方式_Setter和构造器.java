@@ -25,21 +25,19 @@ import org.springframework.context.annotation.Bean;
 /**
  * 基于 Java 注解的依赖 Setter 方法注入示例
  *
- * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
- * @since
  */
-public class D2_AnnotationDependencySetterInjectionDemo {
+public class D2_AnnotationDependencySetterInjectionDemo_手动注入_by_注解配置方式_Setter和构造器 {
 
     public static void main(String[] args) {
 
         // 创建 BeanFactory 容器
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
         // 注册 Configuration Class（配置类）
-        applicationContext.register(D2_AnnotationDependencySetterInjectionDemo.class);
+        applicationContext.register(D2_AnnotationDependencySetterInjectionDemo_手动注入_by_注解配置方式_Setter和构造器.class);
 
         XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(applicationContext);
 
-        String xmlResourcePath = "classpath:/META-INF/dependency-setter-injection.xml";
+        String xmlResourcePath = "classpath:/META-INF/dependency-lookup-context4.xml";
         // 加载 XML 资源，解析并且生成 BeanDefinition
         beanDefinitionReader.loadBeanDefinitions(xmlResourcePath);
 
@@ -54,10 +52,13 @@ public class D2_AnnotationDependencySetterInjectionDemo {
         applicationContext.close();
     }
 
-//    @Bean
-//    public UserHolder userHolder(User user) {
-//        UserHolder userHolder = new UserHolder();
-//        userHolder.setUser(user);
-//        return userHolder;
-//    }
+    @Bean
+    public UserHolder userHolder(User user) {
+        //构造器方式
+//        return new UserHolder(user);
+        UserHolder userHolder = new UserHolder();
+        //set方式
+        userHolder.setUser(user);
+        return userHolder;
+    }
 }

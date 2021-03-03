@@ -21,10 +21,12 @@ import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 
 /**
- * 基于 XML 资源的依赖 Setter 方法注入示例
+ * "byName" Autowiring 依赖 Setter 方法注入示例
+ *
+ *  通过autowire="byType"方式注入，根据名称查名称为user的bean，所以找到dependency-lookup-context4.xml文件中配置的user
  *
  */
-public class D1_XmlDependencySetterInjectionDemo_XML_Setter_方法注入 {
+public class D4_AutoWiringByNameDependencySetterInjectionDemo_自动注入_autoWiring_byName_不推荐使用 {
 
     public static void main(String[] args) {
 
@@ -32,7 +34,7 @@ public class D1_XmlDependencySetterInjectionDemo_XML_Setter_方法注入 {
 
         XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
 
-        String xmlResourcePath = "classpath:/META-INF/dependency-setter-injection.xml";
+        String xmlResourcePath = "classpath:/META-INF/autowiring-dependency-setter-injection.xml";
         // 加载 XML 资源，解析并且生成 BeanDefinition
         beanDefinitionReader.loadBeanDefinitions(xmlResourcePath);
         // 依赖查找并且创建 Bean
@@ -40,4 +42,5 @@ public class D1_XmlDependencySetterInjectionDemo_XML_Setter_方法注入 {
         System.out.println(userHolder);
 
     }
+
 }
