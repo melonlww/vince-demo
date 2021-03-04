@@ -2,22 +2,26 @@ package org.geekbang.dependency.injection;
 
 import org.geekbang.dependency.injection.domain.UserHolder;
 import org.geekbang.ioc.overview.domain.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 /**
- * 基于 Java 注解的依赖 Setter 方法注入示例
+ * 基于 Java 注解的依赖字段注入示例
  *
  */
-public class D2_AnnotationDependencySetterInjectionDemo_手动注入_by_注解配置方式_Setter和构造器 {
+public class D10_AnnotationDependencyFieldInjectionDemo_注解注入_实例字段_Autowired注解 {
+
+    @Autowired
+    private UserHolder userHolder;
 
     public static void main(String[] args) {
 
         // 创建 BeanFactory 容器
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
-        // 注册 Configuration Class（配置类）
-        applicationContext.register(D2_AnnotationDependencySetterInjectionDemo_手动注入_by_注解配置方式_Setter和构造器.class);
+        // 注册 Configuration Class（配置类） -> Spring Bean
+        applicationContext.register(D10_AnnotationDependencyFieldInjectionDemo_注解注入_实例字段_Autowired注解.class);
 
         XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(applicationContext);
 
@@ -28,8 +32,12 @@ public class D2_AnnotationDependencySetterInjectionDemo_手动注入_by_注解�
         // 启动 Spring 应用上下文
         applicationContext.refresh();
 
-        // 依赖查找并且创建 Bean
-        UserHolder userHolder = applicationContext.getBean(UserHolder.class);
+        // 依赖查找 AnnotationDependencyFieldInjectionDemo Bean,  Config类也是一个SpringBean
+        D10_AnnotationDependencyFieldInjectionDemo_注解注入_实例字段_Autowired注解 demo = applicationContext.getBean(D10_AnnotationDependencyFieldInjectionDemo_注解注入_实例字段_Autowired注解.class);
+        System.out.println(demo);
+
+        // @Autowired 字段关联
+        UserHolder userHolder = demo.userHolder;
         System.out.println(userHolder);
 
         // 显示地关闭 Spring 应用上下文
@@ -38,11 +46,6 @@ public class D2_AnnotationDependencySetterInjectionDemo_手动注入_by_注解�
 
     @Bean
     public UserHolder userHolder(User user) {
-        //构造器方式
-//        return new UserHolder(user);
-        UserHolder userHolder = new UserHolder();
-        //set方式
-        userHolder.setUser(user);
-        return userHolder;
+        return new UserHolder(user);
     }
 }
