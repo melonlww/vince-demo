@@ -16,40 +16,35 @@
  */
 package org.geekbang.dependency.injection;
 
-import org.geekbang.ioc.overview.domain.User3;
+import org.geekbang.ioc.overview.domain.User5;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- * 依赖查找示例
- * 1. 通过名称的方式来查找
+ * 注入集合类型lifeCities字段
  *
  * 打印：
- * SuperUser{address='上海'} User3{id=1, name='阿奶', city=HANGZHOU, configFileLocation=class path resource [META-INF/user-config.properties]}
+ * SuperUser{address='上海'} User5{id=1, name='阿奶', city=HANGZHOU, workCities=[BEIJING, HANGZHOU], lifeCities=[BEIJING, SHANGHAI], configFileLocation=class path resource [META-INF/user-config.properties]}
  *
  *
  */
-public class D16_DependencyLookupDemo_自动注入_不同类型的字段_Spring在注入时会自动转换 {
+public class D18_DependencyLookupDemo_自动注入_集合类型字段_Spring在注入时会自动转换 {
 
     public static void main(String[] args) {
         // 配置 XML 配置文件
         // 启动 Spring 应用上下文
         /** user3:
-         *     private City city;
-         *
-         *     private Resource configFileLocation;
+         *     List<City> lifeCities;
          *
          *  xml:
-         *      <property name="city" value="HANGZHOU"/>
-         *      <property name="configFileLocation" value="classpath:/META-INF/user-config.properties"/>
          */
-        BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-lookup-context5.xml");
+        BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-lookup-context7.xml");
         lookupByType(beanFactory);
     }
 
 
     private static void lookupByType(BeanFactory beanFactory) {
-        User3 user =  beanFactory.getBean(User3.class);
+        User5 user =  beanFactory.getBean(User5.class);
         System.out.println("实时查找：" + user);
     }
 }
