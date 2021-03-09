@@ -1,4 +1,4 @@
-package com.xima.socket.bio.d2;
+package com.xima.socket.bio.d2_多线程;
 
 import java.io.*;
 import java.net.Socket;

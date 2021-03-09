@@ -1,10 +1,10 @@
-package com.xima.socket.bio.d2;
+package com.xima.socket.bio.d1_单条执行_阻塞;
 
 import java.io.*;
 import java.net.Socket;
 
 public class SocketClientDemo {
-    
+
     public static void main(String[] args) {
         Socket socket = null;
         try {
