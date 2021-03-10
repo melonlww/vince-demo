@@ -23,7 +23,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 /**
  * 类型安全 依赖查找示例
- *  小马哥推荐使用ObjectProvider去查找Bean，支持单个和集合
+ *
+ *  延迟注入中， 小马哥推荐使用ObjectProvider去查找Bean，支持单个和集合
  */
 public class D8_TypeSafetyDependencyLookupDemo_安全的依赖查找 {
 
@@ -105,8 +106,8 @@ public class D8_TypeSafetyDependencyLookupDemo_安全的依赖查找 {
     }
 
     private static void displayObjectProviderStreamOps(AnnotationConfigApplicationContext applicationContext) {
-        ObjectProvider<User2> User2ObjectProvider = applicationContext.getBeanProvider(User2.class);
-        printBeansException("displayObjectProviderStreamOps", () -> User2ObjectProvider.forEach(System.out::println));
+        ObjectProvider<User2> user2ObjectProvider = applicationContext.getBeanProvider(User2.class);
+        printBeansException("displayObjectProviderStreamOps", () -> user2ObjectProvider.forEach(System.out::println));
     }
 
     private static void displayBeanFactoryUtilsBeansOfTypeIncludingAncestor(AnnotationConfigApplicationContext applicationContext) {
