@@ -11,5 +11,14 @@
 
     <artifactId>socket</artifactId>
 
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/hessian/hessian -->
+        <dependency>
+            <groupId>com.caucho</groupId>
+            <artifactId>hessian</artifactId>
+            <version>4.0.63</version>
+        </dependency>
+
+    </dependencies>
 
 </project>
