@@ -21,16 +21,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
+
+import java.util.Map;
+import java.util.Optional;
 
 /**
  * 注解驱动的依赖注入处理过程
+ *
+ * 分析代码 DefaultListableBeanFactory#resolveDependency
  *
  */
 @Configuration
 public class D23_AnnotationDependencyInjectionResolutionDemo_注解驱动依赖注入的处理过程 {
 
     /**
-     * DefaultListableBeanFactory#resolveDependency
      * 实时注入+通过类型（User.class）依赖查找（处理）
      *
      * DependencyDescriptor ->
@@ -42,6 +47,23 @@ public class D23_AnnotationDependencyInjectionResolutionDemo_注解驱动依赖�
      */
     @Autowired
     private User5 user;
+
+    /**
+     * 集合类型的依赖注入    user superUser
+     */
+    @Autowired
+    private Map<String, User5> users;
+
+    /**
+     *    superUser
+     */
+    @Autowired
+    private Optional<User5> userOptional;
+
+
+    @Autowired
+    @Lazy
+    private User5 lazyUser;
 
 
 
@@ -64,9 +86,14 @@ public class D23_AnnotationDependencyInjectionResolutionDemo_注解驱动依赖�
         // 依赖查找 QualifierAnnotationDependencyInjectionDemo Bean
         D23_AnnotationDependencyInjectionResolutionDemo_注解驱动依赖注入的处理过程 demo = applicationContext.getBean(D23_AnnotationDependencyInjectionResolutionDemo_注解驱动依赖注入的处理过程.class);
 
-
+        // 期待输出 superUser Bean
         System.out.println("demo.user = " + demo.user);
 
+        // 期待输出 user superUser
+        System.out.println("demo.users = " + demo.users);
+
+        // 期待输出 superUser
+        System.out.println("demo.userOptional = " + demo.userOptional.get());
 
         // 显示地关闭 Spring 应用上下文
         applicationContext.close();
