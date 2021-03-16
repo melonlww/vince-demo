@@ -22,6 +22,7 @@ import org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostP
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.CommonAnnotationBeanPostProcessor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 
@@ -41,7 +42,7 @@ import java.util.Optional;
  *
  *
  *
- * {@link AutowiredAnnotationBeanPostProcessor} 构造函数中初始化标签
+ * {@link AutowiredAnnotationBeanPostProcessor} 构造函数中初始化标签  注入标签@Autowired @Value @Inject
  *
  * public AutowiredAnnotationBeanPostProcessor() {
  * 		this.autowiredAnnotationTypes.add(Autowired.class);
@@ -56,6 +57,48 @@ import java.util.Optional;
  *        }*
  *  }
  *
+ *
+ *
+ *
+ *   {@link CommonAnnotationBeanPostProcessor} 构造函数中初始化标签  注入标签@Resource   spring生命周期标签@PostConstruct @PreDestroy
+ *
+ *   public CommonAnnotationBeanPostProcessor() {
+ * 		setOrder(Ordered.LOWEST_PRECEDENCE - 3);
+ * 		setInitAnnotationType(PostConstruct.class);
+ * 		setDestroyAnnotationType(PreDestroy.class);
+ * 		ignoreResourceType("javax.xml.ws.WebServiceContext");
+ *   }
+ *
+ *   public CommonAnnotationBeanPostProcessor() {
+ * 		setOrder(Ordered.LOWEST_PRECEDENCE - 3);
+ * 		setInitAnnotationType(PostConstruct.class);
+ * 		setDestroyAnnotationType(PreDestroy.class);
+ * 		ignoreResourceType("javax.xml.ws.WebServiceContext");
+ *   }
+ *
+ *   private InjectionMetadata buildResourceMetadata(final Class<?> clazz) {
+ *      ReflectionUtils.doWithLocalFields(targetClass, field -> {
+ * 				if (webServiceRefClass != null && field.isAnnotationPresent(webServiceRefClass)) {
+ * 					if (Modifier.isStatic(field.getModifiers())) {
+ * 						throw new IllegalStateException("@WebServiceRef annotation is not supported on static fields");
+ *                  }
+ * 					currElements.add(new WebServiceRefElement(field, field, null));* 				}
+ * 				else if (ejbRefClass != null && field.isAnnotationPresent(ejbRefClass)) {
+ * 					if (Modifier.isStatic(field.getModifiers())) {
+ * 						throw new IllegalStateException("@EJB annotation is not supported on static fields");
+ * 					}
+ * 					currElements.add(new EjbRefElement(field, field, n                ;
+ * 				}
+ * 				else if (field.isAnnotationPresent(Resource.class)) {
+ * 					if (Modifier.isStatic(field.getModifiers())) {
+ * 						throw new IllegalStateException("@Resource annotation is not supported on static fields");
+ * 					}
+ * 					if (!this.ignoredResourceTypes.contains(field.getType().getName())) {
+ * 						currElements.add(new ResourceElement(field, field, null));
+ *                  }
+ *             }
+ * 		});
+ *   }
  *
  */
 @Configuration
