@@ -66,8 +66,8 @@ public class D2_DependencySourceDemo_内建bean无法通过依赖查找找到 {
         // 启动 Spring 应用上下文
         applicationContext.refresh();
 
-        // 依赖查找 DependencySourceDemo Bean
-        D2_DependencySourceDemo_内建bean无法通过依赖查找找到 demo = applicationContext.getBean(D2_DependencySourceDemo_内建bean无法通过依赖查找找到.class);
+//        // 依赖查找 DependencySourceDemo Bean
+//        D2_DependencySourceDemo_内建bean无法通过依赖查找找到 demo = applicationContext.getBean(D2_DependencySourceDemo_内建bean无法通过依赖查找找到.class);
 
         // 显示地关闭 Spring 应用上下文
         applicationContext.close();
