@@ -16,6 +16,7 @@
         <module>s3-spring-bean</module>
         <module>s4-dependency-lookup</module>
         <module>s5-dependency-injection</module>
+        <module>s6-dependency-source</module>
     </modules>
 
     <properties>
