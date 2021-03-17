@@ -9,6 +9,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
+    <description>Spring IoC依赖注入</description>
 
     <artifactId>s5-dependency-injection</artifactId>
 

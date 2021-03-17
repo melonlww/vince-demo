@@ -9,6 +9,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
+    <description>ioc容器</description>
 
     <artifactId>s2-ioc-container-overview</artifactId>
 

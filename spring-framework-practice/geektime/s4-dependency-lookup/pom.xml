@@ -9,6 +9,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
+    <description>Spring IoC依赖查找</description>
 
     <artifactId>s4-dependency-lookup</artifactId>
 
