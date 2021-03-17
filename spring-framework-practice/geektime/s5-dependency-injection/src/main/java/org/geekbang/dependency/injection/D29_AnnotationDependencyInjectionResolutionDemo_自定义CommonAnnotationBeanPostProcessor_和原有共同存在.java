@@ -41,7 +41,7 @@ import org.springframework.core.annotation.Order;
  * @MyPostConstruct : UserFactory 初始化中...
  */
 @Configuration
-public class D29_AnnotationDependencyInjectionResolutionDemo_自定义AutowiredAnnotationBeanPostProcessor_和原有共同存在 {
+public class D29_AnnotationDependencyInjectionResolutionDemo_自定义CommonAnnotationBeanPostProcessor_和原有共同存在 {
 
     @Autowired
     private User6 user;
@@ -66,7 +66,7 @@ public class D29_AnnotationDependencyInjectionResolutionDemo_自定义AutowiredA
         // 创建 BeanFactory 容器
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
         // 注册 Configuration Class（配置类） -> Spring Bean
-        applicationContext.register(D29_AnnotationDependencyInjectionResolutionDemo_自定义AutowiredAnnotationBeanPostProcessor_和原有共同存在.class);
+        applicationContext.register(D29_AnnotationDependencyInjectionResolutionDemo_自定义CommonAnnotationBeanPostProcessor_和原有共同存在.class);
 
         XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(applicationContext);
 
@@ -78,7 +78,7 @@ public class D29_AnnotationDependencyInjectionResolutionDemo_自定义AutowiredA
         applicationContext.refresh();
 
         // 依赖查找 QualifierAnnotationDependencyInjectionDemo Bean
-        D29_AnnotationDependencyInjectionResolutionDemo_自定义AutowiredAnnotationBeanPostProcessor_和原有共同存在 demo = applicationContext.getBean(D29_AnnotationDependencyInjectionResolutionDemo_自定义AutowiredAnnotationBeanPostProcessor_和原有共同存在.class);
+        D29_AnnotationDependencyInjectionResolutionDemo_自定义CommonAnnotationBeanPostProcessor_和原有共同存在 demo = applicationContext.getBean(D29_AnnotationDependencyInjectionResolutionDemo_自定义CommonAnnotationBeanPostProcessor_和原有共同存在.class);
 
         // 期待输出 superUser Bean
         System.out.println("demo.user = " + demo.user);
