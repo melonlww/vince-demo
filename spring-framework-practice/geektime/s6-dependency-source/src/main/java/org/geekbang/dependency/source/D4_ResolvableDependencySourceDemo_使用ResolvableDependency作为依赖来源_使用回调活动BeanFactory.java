@@ -17,8 +17,6 @@
 package org.geekbang.dependency.source;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
-import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import javax.annotation.PostConstruct;
@@ -26,7 +24,7 @@ import javax.annotation.PostConstruct;
 /**
  * ResolvableDependency 作为依赖来源
  */
-public class D3_ResolvableDependencySourceDemo {
+public class D4_ResolvableDependencySourceDemo_使用ResolvableDependency作为依赖来源_使用回调活动BeanFactory {
 
     @Autowired
     private String value;
@@ -41,16 +39,13 @@ public class D3_ResolvableDependencySourceDemo {
         // 创建 BeanFactory 容器
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
 
-        AutowireCapableBeanFactory beanFactory = applicationContext.getBeanFactory();
-
-        if(beanFactory instanceof ConfigurableListableBeanFactory){
-            ConfigurableListableBeanFactory configurableListableBeanFactory = ConfigurableListableBeanFactory.class.cast(beanFactory);
-            //注册 Resolvable Dependency
-            configurableListableBeanFactory.registerResolvableDependency(String.class, "Hello,World");
-        }
-
         // 注册 Configuration Class（配置类） -> Spring Bean
-        applicationContext.register(D3_ResolvableDependencySourceDemo.class);
+        applicationContext.register(D4_ResolvableDependencySourceDemo_使用ResolvableDependency作为依赖来源_使用回调活动BeanFactory.class);
+
+        applicationContext.addBeanFactoryPostProcessor(beanFactory -> {
+            // 注册 Resolvable Dependency
+            beanFactory.registerResolvableDependency(String.class, "Hello,World");
+        });
 
         // 启动 Spring 应用上下文
         applicationContext.refresh();
