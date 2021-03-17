@@ -27,6 +27,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 
+import javax.annotation.Resource;
+
 /**
  * 自定义的注解@MyPostConstruct 和原有注解@PreDestroy都起效果
  *
@@ -43,7 +45,7 @@ import org.springframework.core.annotation.Order;
 @Configuration
 public class D29_AnnotationDependencyInjectionResolutionDemo_自定义CommonAnnotationBeanPostProcessor_和原有共同存在 {
 
-    @Autowired
+    @Resource
     private User6 user;
 
     /**
