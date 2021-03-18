@@ -17,6 +17,7 @@
         <module>s4-dependency-lookup</module>
         <module>s5-dependency-injection</module>
         <module>s6-dependency-source</module>
+        <module>s7-bean-scope</module>
     </modules>
 
     <properties>
