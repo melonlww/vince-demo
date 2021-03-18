@@ -6,7 +6,9 @@
         <link rel="stylesheet" href="<spring:theme code='styleSheet'/>" type="text/css"/>
     </head>
     <body>
-        \${userObject.name} : ${userObject.name}
-        \${applicationScope['scopedTarget.user'].name} : ${applicationScope['scopedTarget.user'].name}
+        <br>userObject.id : ${userObject.id} </br>
+        <br>userObject.name : ${userObject.name} </br>
+        <br>applicationScope['scopedTarget.id'].id : ${applicationScope['scopedTarget.id'].id} </br>
+        <br>applicationScope['scopedTarget.user'].name : ${applicationScope['scopedTarget.user'].name} </br>
     </body>
 </html>

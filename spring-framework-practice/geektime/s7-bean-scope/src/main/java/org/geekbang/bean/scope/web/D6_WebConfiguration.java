@@ -20,6 +20,7 @@ import org.geekbang.ioc.overview.domain.User6;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.annotation.ApplicationScope;
+import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 /**
@@ -29,8 +30,26 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  *      cd ~/practice/code/vince-demo/spring-framework-practice/geektime
  *      mvn clean package
  *
+ * 启动war
  *      cd ~/practice/code/vince-demo/spring-framework-practice/geektime/s7-bean-scope/target
  *      java -jar s7-bean-scope-1.0-SNAPSHOT-war-exec.jar
+ *
+ * debug调试
+ *      java -jar -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:9527 s7-bean-scope-1.0-SNAPSHOT-war-exec.jar
+ *
+ *
+ *
+ * @RequestScope 每次请求都会生成一个新的bean
+ * 打印：
+ * ============================
+ * User Bean [scopedTarget.user] 初始化...
+ * User Bean [scopedTarget.user] 销毁中...
+ * User Bean [scopedTarget.user] 初始化...
+ * User Bean [scopedTarget.user] 销毁中...
+ *
+ *
+ *
+ *
  *
  */
 @Configuration
@@ -38,12 +57,12 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 public class D6_WebConfiguration {
 
     @Bean
-//    @RequestScope
+    @RequestScope
 //    @SessionScope
-    @ApplicationScope
+//    @ApplicationScope
     public User6 user() {
         User6 user = new User6();
-        user.setId(1L);
+        user.setId(System.nanoTime());
         user.setName("小ww");
         return user;
     }
