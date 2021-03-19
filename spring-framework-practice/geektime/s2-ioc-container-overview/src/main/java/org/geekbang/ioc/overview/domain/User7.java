@@ -9,7 +9,7 @@ import javax.annotation.PreDestroy;
 import java.util.Arrays;
 import java.util.List;
 
-public class User6 implements BeanNameAware {
+public class User7 implements BeanNameAware {
 
     private Long id;
 
@@ -78,7 +78,7 @@ public class User6 implements BeanNameAware {
 
     @Override
     public String toString() {
-        return "User6{" +
+        return "User7{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", city=" + city +
@@ -88,8 +88,8 @@ public class User6 implements BeanNameAware {
                 '}';
     }
 
-    public static User6 createUser() {
-        User6 user = new User6();
+    public static User7 createUser() {
+        User7 user = new User7();
         user.setId(6L);
         user.setName("小宝");
         return user;

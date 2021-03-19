@@ -16,11 +16,13 @@
  */
 package org.geekbang.bean.scope.web;
 
+import org.geekbang.ioc.overview.domain.User5;
 import org.geekbang.ioc.overview.domain.User6;
+import org.geekbang.ioc.overview.domain.User7;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.annotation.ApplicationScope;
-import org.springframework.web.context.annotation.RequestScope;
+import org.springframework.web.context.support.ServletContextScope;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 /**
@@ -37,33 +39,31 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  * debug调试
  *      java -jar -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:9527 s7-bean-scope-1.0-SNAPSHOT-war-exec.jar
  *
+ * 请求：http://localhost:8080/index_application.html
  *
- *
- * @RequestScope 每次请求都会生成一个新的bean
- * 打印：
- * ============================
- * User Bean [scopedTarget.user] 初始化...
- * User Bean [scopedTarget.user] 销毁中...
- * User Bean [scopedTarget.user] 初始化...
- * User Bean [scopedTarget.user] 销毁中...
- *
- *
- *
- *
+ * @ApplicationScope 直接存于servletContext中
+ * 代码： {@link ServletContextScope}
+ *  @Override
+ *  public Object get(String name, ObjectFactory<?> objectFactory) {
+ * 		Object scopedObject = this.servletContext.getAttribute(name);
+ * 		if (scopedObject == null) {
+ * 			scopedObject = objectFactory.getObject();
+ * 			this.servletContext.setAttribute(name, scopedObject);
+ *        }
+ * 		return scopedObject;
+ *    }
  *
  */
 @Configuration
 @EnableWebMvc
-public class D6_WebConfiguration {
+public class D7_WebConfiguration_application_Bean作用域 {
 
     @Bean
-    @RequestScope
-//    @SessionScope
-//    @ApplicationScope
-    public User6 user() {
-        User6 user = new User6();
+    @ApplicationScope
+    public User7 user7() {
+        User7 user = new User7();
         user.setId(System.nanoTime());
-        user.setName("小ww");
+        user.setName("小pp");
         return user;
     }
 
