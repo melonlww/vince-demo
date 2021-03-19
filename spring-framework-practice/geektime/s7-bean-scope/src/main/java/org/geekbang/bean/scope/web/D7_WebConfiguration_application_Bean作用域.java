@@ -16,8 +16,6 @@
  */
 package org.geekbang.bean.scope.web;
 
-import org.geekbang.ioc.overview.domain.User5;
-import org.geekbang.ioc.overview.domain.User6;
 import org.geekbang.ioc.overview.domain.User7;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
