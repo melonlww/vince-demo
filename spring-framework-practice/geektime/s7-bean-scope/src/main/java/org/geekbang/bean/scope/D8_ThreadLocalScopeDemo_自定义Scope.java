@@ -16,6 +16,7 @@
  */
 package org.geekbang.bean.scope;
 
+import org.geekbang.bean.scope.annoation.ThreadLocalScopeAnnotation;
 import org.geekbang.ioc.overview.domain.User6;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -28,7 +29,7 @@ import org.springframework.context.annotation.Scope;
 public class D8_ThreadLocalScopeDemo_自定义Scope {
 
     @Bean
-    @Scope(ThreadLocalScope.SCOPE_NAME)
+    @ThreadLocalScopeAnnotation //模拟@RequestScope实现 替换@Scope(ThreadLocalScope.SCOPE_NAME)
     public User6 user() {
         return createUser();
     }
@@ -54,17 +55,30 @@ public class D8_ThreadLocalScopeDemo_自定义Scope {
 
         // 启动 Spring 应用上下文
         applicationContext.refresh();
-
-        scopedBeansByLookup(applicationContext);
+        /**
+         * 同个线程
+         */
+        scopedBeansByCurrentThreadLookup(applicationContext);
+        /**
+         * 不同线程
+         */
+        scopedBeansByMultiThreadLookup(applicationContext);
 
         // 关闭 Spring 应用上下文
         applicationContext.close();
     }
 
-    private static void scopedBeansByLookup(AnnotationConfigApplicationContext applicationContext) {
+    private static void scopedBeansByCurrentThreadLookup(AnnotationConfigApplicationContext applicationContext) {
+        for (int i = 0; i < 3; i++) {
+            // user 是共享 Bean 对象
+            User6 user = applicationContext.getBean("user", User6.class);
+            System.out.printf("[Thread id :%d] user = %s%n", Thread.currentThread().getId(), user);
+        }
+    }
+
+    private static void scopedBeansByMultiThreadLookup(AnnotationConfigApplicationContext applicationContext) {
         for (int i = 0; i < 3; i++) {
             Thread thread = new Thread(() -> {
-                // user 是共享 Bean 对象
                 User6 user = applicationContext.getBean("user", User6.class);
                 System.out.printf("[Thread id :%d] user = %s%n", Thread.currentThread().getId(), user);
             });
@@ -78,8 +92,5 @@ public class D8_ThreadLocalScopeDemo_自定义Scope {
                 e.printStackTrace();
             }
         }
-    }
-
-    private static void scopedBeansByInjection(AnnotationConfigApplicationContext applicationContext) {
     }
 }

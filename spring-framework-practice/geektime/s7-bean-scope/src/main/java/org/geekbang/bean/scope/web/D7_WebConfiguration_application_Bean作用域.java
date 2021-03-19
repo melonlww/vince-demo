@@ -39,6 +39,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  *
  * 请求：http://localhost:8080/index_application.html
  *
+ * 
  * @ApplicationScope 直接存于servletContext中
  * 代码： {@link ServletContextScope}
  *  @Override

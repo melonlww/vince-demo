@@ -38,7 +38,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  *
  * 请求：http://localhost:8080/index.html
  *
- *
+ * 实验一：
  * @RequestScope 每次请求都会生成一个新的bean
  * 代码：{@link org.springframework.web.context.request.RequestScope}
  *
@@ -50,6 +50,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  * User Bean [scopedTarget.user] 销毁中...
  *
  *
+ *
+ * 实验二：
  * @SessionScope ，当有新的cookie/session时，会生成新的bean，   用户可能打开浏览器的多个tab，为防止有可能的并发问题SessionScope用了synchronized锁处理
  * 代码：{@link org.springframework.web.context.request.SessionScope}
  *
